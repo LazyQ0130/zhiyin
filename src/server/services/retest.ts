@@ -5,6 +5,7 @@ import {atomicMutation} from './idempotency';
 import {getPractice,practiceDTO} from './queries';
 import {PRACTICE_BANK} from '@/server/domain/practice-bank';
 import type {Prisma} from '@/generated/prisma/client';
+import {knownNoAssistance} from '@/server/domain/assistance-review';
 export async function createRetest(userId:string,setId:string,key:string){
   await getPractice(userId,setId);
   const id=await atomicMutation(userId,'retest:'+setId,key,{},async tx=>{
@@ -17,7 +18,7 @@ export async function createRetest(userId:string,setId:string,key:string){
     const taken=new Set(used.map(i=>i.seedId));const bank=PRACTICE_BANK.filter(i=>!taken.has(i.id)).slice(0,3);
     if(bank.length<3)throw new AppError('PRACTICE_NOT_VERIFIABLE','本次诊断可用的新题已经做完，暂不生成未经核验的题目。',422);
     const delayed=parent.review?.dueAt&&parent.review.dueAt<=new Date();
-    const next=await tx.practiceSet.create({data:{userId,sessionId:parent.sessionId,retestOfId:setId,title:delayed?'判别式与负号运算 · 延迟新题复测':'判别式与负号运算 · 即时新题练习',source:'ORIGINAL_RULE_CHECKED',isDemo:parent.isDemo,validatedAt:new Date(),findings:{create:parent.findings.map(f=>({findingId:f.findingId}))},items:{create:bank.map((item,i)=>({order:i+1,seedId:item.id,tier:item.tier,questionText:item.questionText,answerSpec:item.answerSpec as Prisma.InputJsonObject,hint:item.hint}))}}});
+    const next=await tx.practiceSet.create({data:{userId,sessionId:parent.sessionId,retestOfId:setId,title:delayed?'判别式与负号运算 · 延迟新题复测':'判别式与负号运算 · 即时新题练习',source:'ORIGINAL_RULE_CHECKED',isDemo:parent.isDemo,validatedAt:new Date(),findings:{create:parent.findings.map(f=>({findingId:f.findingId}))},items:{create:bank.map((item,i)=>({order:i+1,seedId:item.id,tier:item.tier,questionText:item.questionText,answerSpec:item.answerSpec as Prisma.InputJsonObject,hint:item.hint,assistance:knownNoAssistance() as unknown as Prisma.InputJsonObject}))}}});
     if(parent.review)await tx.reviewTask.update({where:{id:parent.review.id},data:{status:'IN_PROGRESS'}});
     return next.id;
   });return practiceDTO(await getPractice(userId,id));

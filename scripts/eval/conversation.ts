@@ -10,6 +10,7 @@ import {
 } from "../../src/evaluation/conversation-schemas";
 import { advanceConversationContext, isConversationTerminal, scoreConversationEvaluation } from "../../src/evaluation/conversation-score";
 import type { DiagnosisTurn } from "../../src/server/ai/schemas/diagnosis";
+import {DIAGNOSIS_PROMPT_VERSION} from '../../src/server/ai/prompts/diagnosis-v1';
 
 // The only provider import below is MockGateway. No live gateway factory, environment key, or fetch is used.
 if (!process.argv.includes("--conversation-offline-worker")) {
@@ -42,7 +43,7 @@ function selected(dataset: ConversationDataset) {
   return cases;
 }
 function emptyRun(dataset: ConversationDataset, ids: string[], purpose: ConversationRun["purpose"] = "ENGINEERING_DEBUG", auditReason: string | null = null): ConversationRun {
-  return { schemaVersion: "1.0", runId: randomUUID(), createdAt: new Date().toISOString(), datasetId: dataset.datasetId, datasetVersion: dataset.version, datasetHash: hashValue(dataset), caseIds: ids, mode: "SIMULATED", purpose, auditReason, provider: "mock", model: "deterministic-demo-v1", promptVersion: "diagnosis-v1.0.0", records: [] };
+  return { schemaVersion: "1.0", runId: randomUUID(), createdAt: new Date().toISOString(), datasetId: dataset.datasetId, datasetVersion: dataset.version, datasetHash: hashValue(dataset), caseIds: ids, mode: "SIMULATED", purpose, auditReason, provider: "mock", model: "deterministic-demo-v1", promptVersion: DIAGNOSIS_PROMPT_VERSION,trustPolicyVersion:'M8.1', records: [] };
 }
 try {
   for (let index = 0; index < argv.length; index++) {
@@ -89,7 +90,7 @@ try {
           // Immutable checkpoint after every attempt; existing artifacts are never overwritten.
           await save(`checkpoint-${run.records.length}-${turnIndex}.json`, conversationRunSchema.parse(run));
           if (errorCode || isConversationTerminal(output as DiagnosisTurn)) break;
-          if (turnIndex < sample.studentReplies.length) context = advanceConversationContext(sample, context, output as DiagnosisTurn, turnIndex);
+          if (turnIndex < sample.studentReplies.length) context = advanceConversationContext(sample, context, output as DiagnosisTurn, turnIndex,run.trustPolicyVersion);
         }
       }
       const validated = conversationRunSchema.parse(run), report = scoreConversationEvaluation(dataset, validated);

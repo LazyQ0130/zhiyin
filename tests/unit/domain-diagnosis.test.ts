@@ -7,6 +7,7 @@ import { canTransition, transitionDiagnosis } from "../../src/server/domain/diag
 import { isDemoQuadratic, parseNumericAnswer, verifyQuadratic } from "../../src/server/domain/math-verifier";
 import { evaluatePractice, escalateAssistance } from "../../src/server/domain/practice-evaluation";
 import { PRACTICE_BANK, selectPracticeItems, toPublicPracticeItem } from "../../src/server/domain/practice-bank";
+import { reviewAssistance } from "../../src/server/domain/assistance-review";
 
 function context(overrides: Partial<DiagnosisContext> = {}): DiagnosisContext {
   return {questionId:"q1",questionText:"解一元二次方程 x² - 5x + 6 = 0。",subject:"MATH",gradeBand:"HIGH_SCHOOL",steps:[{id:"s1",text:"a=1,b=-5,c=6"},{id:"s2",text:"Δ=25+24=49"},{id:"s3",text:"x=(5±7)/2"}],messages:[],findings:[],turnCount:0,hintLevel:0,...overrides};
@@ -31,7 +32,8 @@ describe("Mock evidence and follow-up policy", () => {
     expect(turn.studentFacingText).toContain("一致");
   });
   it("retains the observed error and refutes the knowledge hypothesis on counterevidence", async () => {
-    const turn=await new MockGateway().createDiagnosisTurn(context({turnCount:1,messages:[{id:"m2",role:"USER",content:"我明白了，-4ac=-24，所以是1；上一行确实是我写错了。"}]}));
+    const question="请说明你这一步的思路。";
+    const turn=await new MockGateway().createDiagnosisTurn(context({turnCount:1,messages:[{id:"m1",role:"ASSISTANT",content:question,assistance:reviewAssistance({studentFacingText:question,declaredHintLevel:0})},{id:"m2",role:"USER",content:"我明白了，-4ac=-24，所以是1；上一行确实是我写错了。"}]}));
     expect(turn.action).toBe("FINISH_REPORT");
     expect(turn.findings.find(f => f.category==="KNOWLEDGE")?.status).toBe("REFUTED");
     expect(turn.findings[1].contradictingEvidence[0].sourceId).toBe("m2");

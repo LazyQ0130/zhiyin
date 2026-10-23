@@ -7,6 +7,23 @@ export const evidenceSchema = z.strictObject({
   sourceId: z.string().min(1).max(160),
   excerpt: z.string().max(2000).optional(),
 });
+/** Additive 1.0 metadata. Status remains the legacy workflow state, not a measure of causal certainty. */
+export const findingTrustSchema = z.strictObject({
+  kind: z.enum(["OBSERVATION", "HYPOTHESIS", "VERIFIED", "INCONCLUSIVE"]),
+  uncertainties: z.array(z.string().min(1).max(240)).max(12),
+  verification: z.strictObject({
+    state: z.enum(["NOT_CHECKED", "SUPPORTED", "WEAKENED", "REFUTED", "VERIFIED", "INCONCLUSIVE"]),
+    basis: z.enum(["NONE", "STUDENT_REPLY", "DETERMINISTIC_RULE"]),
+    evidence: z.array(evidenceSchema).max(12),
+  }),
+  rootCause: z.strictObject({
+    role: z.enum(["INITIAL", "PROPAGATED", "INDEPENDENT", "UNKNOWN"]),
+    candidateRootId: z.string().min(1).max(100).nullable(),
+    relatedFindingKeys: z.array(z.string().min(1).max(100)).max(8),
+    upstreamStepIds: z.array(z.string().min(1).max(160)).max(40),
+  }),
+});
+export type FindingTrust = z.infer<typeof findingTrustSchema>;
 export const findingSchema = z.strictObject({
   findingKey: z.string().min(1).max(100),
   category: z.enum(TAXONOMY),
@@ -15,6 +32,7 @@ export const findingSchema = z.strictObject({
   supportingEvidence: z.array(evidenceSchema).max(12),
   contradictingEvidence: z.array(evidenceSchema).max(12),
   verificationNeeded: z.boolean(),
+  trust: findingTrustSchema.optional(),
 }).superRefine((finding, ctx) => {
   if (["SUPPORTED", "VERIFIED"].includes(finding.status) && !finding.supportingEvidence.length) {
     ctx.addIssue({code: "custom", message: "有支持/已验证发现必须有支持证据"});

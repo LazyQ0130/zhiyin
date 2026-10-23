@@ -1,6 +1,7 @@
 import type { DiagnosisContext } from "../server/ai/gateway";
 import { diagnosisTurnSchema, type DiagnosisTurn } from "../server/ai/schemas/diagnosis";
 import { validateDiagnosisTurn } from "../server/ai/validate-turn";
+import {reviewAssistance} from '../server/domain/assistance-review';
 import { evaluationContextSchema, hashValue, isApprovedReview } from "./schemas";
 import {
   CONVERSATION_RUBRIC_METRICS, conversationAnnotationSetSchema, conversationAssistantId, conversationCaseInputHash,
@@ -22,13 +23,14 @@ export function conversationAssistantText(output: DiagnosisTurn): string {
 export function isConversationTerminal(output: DiagnosisTurn): boolean {
   return output.action === "FINISH_REPORT" || output.action === "MARK_INCONCLUSIVE";
 }
-export function advanceConversationContext(sample: ConversationCase, previous: DiagnosisContext, output: DiagnosisTurn, previousTurnIndex: number): DiagnosisContext {
+export function advanceConversationContext(sample: ConversationCase, previous: DiagnosisContext, output: DiagnosisTurn, previousTurnIndex: number, trustPolicyVersion?:'M8.1'): DiagnosisContext {
   const reply = sample.studentReplies[previousTurnIndex];
   if (!reply) throw new Error("NO_SCRIPTED_REPLY_FOR_NEXT_TURN");
+  const assistance=trustPolicyVersion?reviewAssistance({studentFacingText:conversationAssistantText(output),findings:output.findings,declaredHintLevel:output.hintLevel,requestedAction:previous.requestedAction,subject:previous.subject,questionText:previous.questionText}):undefined;
   return evaluationContextSchema.parse({
     ...previous,
-    messages: [...previous.messages, { id: conversationAssistantId(sample.id, previousTurnIndex), role: "ASSISTANT", content: conversationAssistantText(output) }, { id: reply.id, role: "USER", content: reply.content }],
-    findings: output.findings, turnCount: previous.turnCount + 1, hintLevel: output.hintLevel, requestedAction: "REPLY",
+    messages: [...previous.messages, { id: conversationAssistantId(sample.id, previousTurnIndex), role: "ASSISTANT", content: conversationAssistantText(output),...(assistance?{assistance}:{}) }, { id: reply.id, role: "USER", content: reply.content }],
+    findings: output.findings, turnCount: previous.turnCount + 1, hintLevel: trustPolicyVersion?Math.max(previous.hintLevel,assistance?.effectiveLevel??output.hintLevel):output.hintLevel, requestedAction: "REPLY",
   });
 }
 function metric(values: Array<number | null>): ConversationMetric {
@@ -86,7 +88,9 @@ export function scoreConversationEvaluation(datasetValue: unknown, runValue: unk
       let output: DiagnosisTurn | null = null;
       let errorCode = actual?.errorCode ?? (actual ? null : "MISSING_TURN_RECORD");
       if (actual?.status === "SUCCESS") {
-        try { output = validateDiagnosisTurn(actual.output, actual.context); }
+        // Audit the immutable historical output. Server guards may normalize a new
+        // response, but must not rewrite what a historical student/model actually saw.
+        try { validateDiagnosisTurn(actual.output, actual.context); output = diagnosisTurnSchema.parse(actual.output); }
         catch { errorCode = "INVALID_OR_UNSCOPED_OUTPUT"; }
       }
       if (!continuation && actual) errorCode = "CONTEXT_CONTINUATION_MISMATCH";
@@ -97,7 +101,7 @@ export function scoreConversationEvaluation(datasetValue: unknown, runValue: unk
         break;
       }
       // A broken/missing previous turn cannot silently establish a fresh, unverified history.
-      expectedContext = validated && expectedContext && turnIndex < scriptTurnCapacity - 1 ? advanceConversationContext(sample, expectedContext, output!, turnIndex) : null;
+      expectedContext = validated && expectedContext && turnIndex < scriptTurnCapacity - 1 ? advanceConversationContext(sample, expectedContext, output!, turnIndex,run.trustPolicyVersion) : null;
     }
     const complete = turns.every(turn => turn.status === "VALIDATED_OUTPUT"), finalOutput = complete ? turns.at(-1)!.output : null;
     const scores = Object.fromEntries(allMetrics.map(key => [key, null])) as Record<MetricName, number | null>;

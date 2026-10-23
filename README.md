@@ -18,6 +18,8 @@ npm run local
 
 ## 开发与验收命令
 
+M8 已增加证据可信度、帮助内容复核、独立作答来源和错误传播约束，以及教师双人审核/来源审计工具。`npm run eval:m8-replay` 只回放本地历史响应；`npm run eval:m8-teacher -- prepare` 生成独立空白材料。实际教师审核仍为0，全部候选仍为PROVISIONAL，M8没有新付费请求。见 [M8研发与验收报告](docs/reports/M8-研发与验收报告.md)、[证据模型](docs/M8-证据可信度与因果关系.md)、[帮助与独立性](docs/M8-辅助内容复核.md)、[教师审核与八项指标](docs/M8-教师独立审核与指标.md)。
+
 M7 增加40条未审数学候选（调试24/盲测候选16）、会话级评分与教师模板。`npm run eval:m7-data` 校验数据与hash；`npm run eval:conversation -- simulate` 仅演练调试集Mock。已按用户一次授权完成1次真实协议检查，出现需教师审阅的归因和追问风险，不能据此宣称教育质量通过。Key仅本地配置，网页仍为Mock。见 [M7交付报告](docs/reports/M7-delivery.md)、[案例集说明](docs/M7-案例集说明.md)、[会话评测规范](docs/M7-会话评测规范.md)、[单次真实检查](docs/M7-单次真实协议检查.md)。
 
 M6 已增加教师标注/离线评分与受控真实测试基础：`npm run eval:validate`、`npm run eval:demo`、`npm run eval:plan`、`npm run test:faults`。真实调用必须另有明确人工授权与配置；默认不调用付费模型。见 [教师评测规范](docs/M6-评测与教师标注规范.md)、[受控调用说明](docs/M6-真实模型受控测试.md)、[M6交付报告](docs/reports/M6-delivery.md) 和 [发布阻塞清单](docs/reports/M6-release-blockers.md)。
@@ -50,7 +52,7 @@ npm start
 1. 解压 ZIP 到准备开发的仓库根目录。
 2. 打开 `docs/知因AI_Codex_启动提示词.md`，将全文粘贴给 Codex。
 3. 让 Codex 阅读文档后真正实现代码、数据库迁移、测试、Docker 环境。
-4. 前期不配置 API Key 可以通过 `AI_MODE=mock` 完成流程和 E2E；配置真实 Key 后切换 `AI_MODE=live` 并运行模型评测。
+4. 使用 `AI_MODE=mock` 完成流程和 E2E。配置真实 Key 不等于调用授权；真实模型评测须先取得明确样本/请求上限/预算授权，再使用受控入口，不能复用已消费的许可。
 
 ## 本次默认但可调整的关键决策
 

@@ -62,7 +62,7 @@ export class MockGateway implements ModelGateway {
     if (!corrected && !explicitlyWrong) return {...base, studentFacingText:"已记录原步骤中的符号差异，但你的回答尚不足以区分笔误、计算失误或规则理解问题。结论保留为待确认。", referencedStepIds:[wrong.id], findings:[{...observation,status:"UNRESOLVED"},{...misconception,status:"UNRESOLVED"}]};
     const ruleEvidence: Evidence = {kind:"TOOL_RESULT",sourceId:"rule:quadratic-v1",excerpt:"−4ac=-24; Δ=1"};
     return {...base, action:"FINISH_REPORT",referencedStepIds:[wrong.id], findings:[
-      {...observation,status:"SUPPORTED",statement:corrected ? "原判别式步骤存在符号差异；后续核算已修正，更可能是本次执行失误，不能据此断言概念不理解。" : "原步骤和本次单独核算均将 −4ac 当成正数，支持负号处理存在困难，但仍需新题区分具体原因。",supportingEvidence:[stepEvidence,ruleEvidence,...replyEvidence]},
+      {...observation,status:"SUPPORTED",statement:corrected ? "原判别式步骤的符号与确定性核算不一致；后续回答中的局部核算已修正，原因仍待确认。" : "原步骤和本次回答中 −4ac 的结果与确定性核算不一致；具体原因仍待确认。",supportingEvidence:[stepEvidence,ruleEvidence,...replyEvidence]},
       {...misconception,status:corrected ? "REFUTED":"SUPPORTED",verificationNeeded:!corrected,contradictingEvidence:corrected ? replyEvidence:[],supportingEvidence:corrected ? [stepEvidence]:[stepEvidence,...replyEvidence]},
     ],studentFacingText:corrected ? "已确认：原判别式中的符号与规则计算不一致，你在追问中已修正。‘不理解负号规则’的假设受到反证。待确认：尚不能区分笔误和偶发运算失误；建议用新题检查独立表现。" : "已确认：原步骤及追问回答都出现了负号处理差异。待确认：还不能据此断言长期概念困难。可先做一组判别式变式，帮助定位和验证。"};
   }

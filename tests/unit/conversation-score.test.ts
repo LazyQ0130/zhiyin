@@ -56,6 +56,19 @@ function rebind(data: ConversationDataset, run: ConversationRun, labels: Convers
 }
 
 describe("M7 conversation structure and immutable context chain", () => {
+  it('M8 records help from actual text and rejects a forged zero while preserving legacy raw chains',()=>{
+    const data=dataset(),run=runFor(data);run.trustPolicyVersion='M8.1';
+    let context=clone(data.cases[0].initialContext);
+    for(const turn of run.records[0].turns){turn.context=clone(context);turn.contextHash=hashValue(context);if(turn.turnIndex<data.cases[0].studentReplies.length)context=advanceConversationContext(data.cases[0],context,turn.output as DiagnosisTurn,turn.turnIndex,'M8.1');}
+    expect(scoreConversationEvaluation(data,run).reliability.failedTurns).toBe(0);
+    const next=run.records[0].turns[1];
+    expect(next.context.messages[0].assistance?.source).toBe('SERVER_CONTENT_REVIEW_V1');
+    expect(next.context.messages[0].assistance?.status).not.toBe('CLEAR');
+    next.context.messages[0].assistance={source:'SERVER_CONTENT_REVIEW_V1',status:'CLEAR',declaredLevel:0,minimumLevel:0,effectiveLevel:0,reasons:['KNOWN_NO_HELP_QUESTION'],reviewRequired:false};
+    next.contextHash=hashValue(next.context);
+    expect(scoreConversationEvaluation(data,run).rows[0].turns[1].contextContinuation).toBe(0);
+    expect(scoreConversationEvaluation(data,runFor(data)).reliability.failedTurns).toBe(0);
+  });
   it("retains model text/findings and every persistent student reply through three turns", () => {
     const data = dataset(), run = runFor(data), result = scoreConversationEvaluation(data, run, labelsFor(data));
     expect(result.reliability).toMatchObject({ scheduledConversations: 1, scheduledTurns: 3, validatedTurns: 3, failedTurns: 0 });

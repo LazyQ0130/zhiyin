@@ -153,6 +153,7 @@ model DiagnosisMessage {
   sequence Int
   referencedStepIds String[]
   operationKey String?
+  assistance Json?
   createdAt DateTime @default(now())
   @@unique([sessionId,sequence])
   @@unique([sessionId,operationKey,role])
@@ -167,6 +168,7 @@ model DiagnosisFinding {
   status String
   primary Boolean @default(false)
   verificationNeeded Boolean
+  trust Json?
   evidence FindingEvidence[]
   practiceLinks PracticeFinding[]
   createdAt DateTime @default(now())
@@ -224,6 +226,8 @@ model PracticeItem {
   answerSpec Json
   hint String
   hintUsed Boolean @default(false)
+  hintUsedAt DateTime?
+  assistance Json?
   answerVisibility String @default("HIDDEN")
   verifierType String @default("DETERMINISTIC")
   submission PracticeSubmission?
@@ -241,6 +245,7 @@ model PracticeSubmission {
   evaluationMethod String
   masteryState String
   feedback String
+  verifierDetails Json?
   createdAt DateTime @default(now())
 }
 model ReviewTask {

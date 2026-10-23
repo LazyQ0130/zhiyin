@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import { diagnosisTurnSchema, findingSchema, TAXONOMY } from "../server/ai/schemas/diagnosis";
+import {parseAssistanceReview,type AssistanceReview} from '../server/domain/assistance-review';
 
 const id = z.string().min(1).max(160);
 const hash = z.string().regex(/^[a-f0-9]{64}$/);
@@ -16,7 +17,7 @@ export function hashValue(value: unknown): string {
 export const evaluationContextSchema = z.strictObject({
   questionId: id, questionText: z.string().min(1).max(10000), subject: id, gradeBand: id,
   steps: z.array(z.strictObject({id, text:z.string().min(1).max(15000)})).max(40),
-  messages: z.array(z.strictObject({id, role:z.enum(["USER", "ASSISTANT"]), content:z.string().min(1).max(4000)})).max(40),
+  messages: z.array(z.strictObject({id, role:z.enum(["USER", "ASSISTANT"]), content:z.string().min(1).max(4000),assistance:z.custom<AssistanceReview>(v=>parseAssistanceReview(v)!==null).transform(v=>parseAssistanceReview(v)!).optional()})).max(40),
   findings: z.array(findingSchema).max(8), turnCount:z.number().int().min(0).max(6),
   hintLevel:z.union([z.literal(0),z.literal(1),z.literal(2),z.literal(3)]), requestedAction:z.enum(["REPLY","HINT","FINISH"]).optional(),
 }).superRefine((v, ctx) => {

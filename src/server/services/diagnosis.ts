@@ -9,6 +9,9 @@ import {findingSchema,type DiagnosisTurn} from '@/server/ai/schemas/diagnosis';
 import {validateDiagnosisTurn} from '@/server/ai/validate-turn';
 import {transitionDiagnosis,stateForAction,type DiagnosisState} from '@/server/domain/diagnosis-fsm';
 import {boundedInteger} from '@/server/ai/configuration';
+import {normalizeEvidenceTrust} from '@/server/ai/evidence-trust';
+import {reviewAssistance} from '@/server/domain/assistance-review';
+import type {Prisma} from '@/generated/prisma/client';
 
 export async function startDiagnosis(userId:string,attemptId:string,key:string){
   const a=await db.attempt.findFirst({where:{id:attemptId,userId,problem:{deletedAt:null}},include:{revision:true}});if(!a)throw new AppError('NOT_FOUND','没有找到已确认的作答。',404);
@@ -64,11 +67,15 @@ export async function runTurn(userId:string,id:string,key:string,input:TurnInput
   try{
     const s=await getSession(userId,id);
     const data=sessionDTO(s);
-    const context:DiagnosisContext={questionId:s.attempt.revision.id,questionText:s.attempt.revision.questionText,subject:s.attempt.problem.subject,gradeBand:s.attempt.problem.gradeBand,steps:s.attempt.steps.map(v=>({id:v.id,text:v.text})),messages:s.messages.slice(-12).map(m=>({id:m.id,role:m.role as 'USER'|'ASSISTANT',content:m.content})),findings:data.findings.map(({findingKey,category,statement,status,supportingEvidence,contradictingEvidence,verificationNeeded})=>findingSchema.parse({findingKey,category,statement,status,supportingEvidence,contradictingEvidence,verificationNeeded})),turnCount:s.turnCount,hintLevel:s.hintLevel as 0|1|2|3,requestedAction:lease.input.action==='HINT'?'HINT':lease.input.action==='FINISH'?'FINISH':'REPLY'};
+    const context:DiagnosisContext={questionId:s.attempt.revision.id,questionText:s.attempt.revision.questionText,subject:s.attempt.problem.subject,gradeBand:s.attempt.problem.gradeBand,steps:s.attempt.steps.map(v=>({id:v.id,text:v.text})),messages:data.messages.slice(-12).map(m=>({...m,role:m.role as 'USER'|'ASSISTANT'})),findings:data.findings.map(({findingKey,category,statement,status,supportingEvidence,contradictingEvidence,verificationNeeded,trust})=>findingSchema.parse({findingKey,category,statement,status,supportingEvidence,contradictingEvidence,verificationNeeded,trust})),turnCount:s.turnCount,hintLevel:s.hintLevel as 0|1|2|3,requestedAction:lease.input.action==='HINT'?'HINT':lease.input.action==='FINISH'?'FINISH':'REPLY'};
     let turn:DiagnosisTurn;
     if(lease.input.action==='FINISH'){
-      turn={schemaVersion:'1.0',action:'MARK_INCONCLUSIVE',studentFacingText:'本次诊断已保存。已确认：保留你提交的步骤与对话证据。待确认：仍不足以确定错误原因；可以稍后用新题验证。',referencedStepIds:[],findings:context.findings.map(f=>({...f,status:f.status==='REFUTED'?'REFUTED':'UNRESOLVED',verificationNeeded:f.status!=='REFUTED'})),followUpQuestion:null,hintLevel:context.hintLevel,safetyFlags:['STUDENT_ENDED_OR_TURN_LIMIT']};
+      turn=normalizeEvidenceTrust({schemaVersion:'1.0',action:'MARK_INCONCLUSIVE',studentFacingText:'本次诊断已保存。已确认：保留你提交的步骤与对话证据。待确认：仍不足以确定错误原因；可以稍后用新题验证。',referencedStepIds:[],findings:context.findings.map(f=>({...f,status:f.status==='REFUTED'?'REFUTED':'UNRESOLVED',verificationNeeded:f.status!=='REFUTED'})),followUpQuestion:null,hintLevel:context.hintLevel,safetyFlags:['STUDENT_ENDED_OR_TURN_LIMIT']},context);
+      turn.findings=turn.findings.map(f=>f.status==='REFUTED'?f:{...f,status:'UNRESOLVED',verificationNeeded:true,trust:f.trust?{...f.trust,kind:'INCONCLUSIVE',verification:{...f.trust.verification,state:'INCONCLUSIVE'}}:undefined});
     }else{gateway=gatewayFactory();turn=validateDiagnosisTurn(await gateway.createDiagnosisTurn(context),context);}
+    const assistantText=turn.followUpQuestion&&!turn.studentFacingText.includes(turn.followUpQuestion)?`${turn.studentFacingText}\n${turn.followUpQuestion}`:turn.studentFacingText;
+    const assistance=reviewAssistance({studentFacingText:assistantText,findings:turn.findings,declaredHintLevel:turn.hintLevel,requestedAction:context.requestedAction,subject:context.subject,questionText:context.questionText});
+    const primaryKey=turn.findings.find(f=>['SUPPORTED','VERIFIED'].includes(f.status)&&['OBSERVATION','VERIFIED'].includes(f.trust?.kind??'')&&f.trust?.rootCause.role!=='PROPAGATED')?.findingKey;
     const finalState=transitionDiagnosis(lease.state,stateForAction(turn.action));
     await db.$transaction(async tx=>{
       const locked=await tx.diagnosisSession.findFirst({where:{id,userId,lockToken:token,deletedAt:null}});if(!locked)throw new AppError('SESSION_BUSY','会话状态已更新，请刷新。',409);
@@ -77,15 +84,19 @@ export async function runTurn(userId:string,id:string,key:string,input:TurnInput
       if(['REPORT_READY','INCONCLUSIVE'].includes(finalState)){
         // Preserve prior evidence, but an omitted final hypothesis is not a supported conclusion.
         await tx.diagnosisFinding.updateMany({where:{sessionId:id,findingKey:{notIn:turn.findings.map(f=>f.findingKey)},status:{not:'REFUTED'}},data:{status:'UNRESOLVED',verificationNeeded:true,primary:false}});
+        for(const f of data.findings.filter(f=>!turn.findings.some(next=>next.findingKey===f.findingKey)&&f.status!=='REFUTED')){
+          if(f.trust)await tx.diagnosisFinding.update({where:{sessionId_findingKey:{sessionId:id,findingKey:f.findingKey}},data:{trust:{...f.trust,kind:'INCONCLUSIVE',verification:{...f.trust.verification,state:'INCONCLUSIVE'}} as Prisma.InputJsonObject}});
+        }
       }
-      for(const [index,f] of turn.findings.entries()){
-        const finding=await tx.diagnosisFinding.upsert({where:{sessionId_findingKey:{sessionId:id,findingKey:f.findingKey}},create:{sessionId:id,findingKey:f.findingKey,category:f.category,statement:f.statement,status:f.status,verificationNeeded:f.verificationNeeded,primary:index===0&&['SUPPORTED','VERIFIED'].includes(f.status)},update:{category:f.category,statement:f.statement,status:f.status,verificationNeeded:f.verificationNeeded,primary:index===0&&['SUPPORTED','VERIFIED'].includes(f.status)}});
+      for(const f of turn.findings){
+        const fields={category:f.category,statement:f.statement,status:f.status,verificationNeeded:f.verificationNeeded,primary:f.findingKey===primaryKey,trust:f.trust as Prisma.InputJsonObject};
+        const finding=await tx.diagnosisFinding.upsert({where:{sessionId_findingKey:{sessionId:id,findingKey:f.findingKey}},create:{sessionId:id,findingKey:f.findingKey,...fields},update:fields});
         for(const [polarity,evidence] of [['SUPPORTING',f.supportingEvidence],['CONTRADICTING',f.contradictingEvidence]] as const){for(const e of evidence)await tx.findingEvidence.upsert({where:{findingId_sourceType_sourceId_polarity:{findingId:finding.id,sourceType:e.kind,sourceId:e.sourceId,polarity}},create:{findingId:finding.id,sourceType:e.kind,sourceId:e.sourceId,polarity,excerpt:e.excerpt},update:{excerpt:e.excerpt}});}
       }
       const last=await tx.diagnosisMessage.aggregate({where:{sessionId:id},_max:{sequence:true}});
-      await tx.diagnosisMessage.create({data:{sessionId:id,role:'ASSISTANT',content:turn.studentFacingText,kind:turn.action,sequence:(last._max.sequence??0)+1,referencedStepIds:turn.referencedStepIds,operationKey:lease.key}});
+      await tx.diagnosisMessage.create({data:{sessionId:id,role:'ASSISTANT',content:assistantText,kind:turn.action,sequence:(last._max.sequence??0)+1,referencedStepIds:turn.referencedStepIds,operationKey:lease.key,assistance:assistance as unknown as Prisma.InputJsonObject}});
       const done=['REPORT_READY','INCONCLUSIVE'].includes(finalState);
-      await tx.diagnosisSession.update({where:{id},data:{status:finalState,turnCount:{increment:1},hintLevel:Math.max(s.hintLevel,turn.hintLevel),lockToken:null,lockUntil:null,...(done?{finishedAt:new Date(),reportVersion:{increment:1}}:{})}});
+      await tx.diagnosisSession.update({where:{id},data:{status:finalState,turnCount:{increment:1},hintLevel:Math.max(s.hintLevel,assistance.effectiveLevel??turn.hintLevel),lockToken:null,lockUntil:null,...(done?{finishedAt:new Date(),reportVersion:{increment:1}}:{})}});
       await tx.mutationKey.update({where:{userId_scope_key:{userId,scope,key:lease.key}},data:{status:'COMPLETED'}});
       const m=gateway?.lastInvocation;if(m)await tx.modelInvocation.create({data:{userId,sessionId:id,provider:m.provider,model:m.model,promptVersion:m.promptVersion,inputTokens:m.inputTokens,outputTokens:m.outputTokens,latencyMs:m.latencyMs,status:m.status,errorClass:m.errorClass}});
     });

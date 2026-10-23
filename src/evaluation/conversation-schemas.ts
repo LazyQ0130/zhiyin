@@ -78,7 +78,7 @@ export const conversationRunSchema = z.strictObject({
   schemaVersion: z.literal("1.0"), runId: id, createdAt: z.iso.datetime(), datasetId: id, datasetVersion: id, datasetHash: hash,
   caseIds: uniqueIds.min(1), mode: z.enum(["SIMULATED", "LIVE_API"]),
   purpose: z.enum(["ENGINEERING_DEBUG", "BLIND_AUDIT", "FINAL_EVALUATION"]), auditReason: z.string().trim().min(1).nullable(),
-  provider: id, model: id, promptVersion: id, records: z.array(conversationRecordSchema).max(10000),
+  provider: id, model: id, promptVersion: id, trustPolicyVersion:z.literal('M8.1').optional(), records: z.array(conversationRecordSchema).max(10000),
 }).superRefine((run, ctx) => {
   if (run.mode === "SIMULATED" && (run.provider !== "mock" || run.purpose === "FINAL_EVALUATION")) ctx.addIssue({ code: "custom", message: "离线模拟只能为mock且不得称为最终评测" });
   if (run.mode === "LIVE_API" && run.provider.toLowerCase() === "mock") ctx.addIssue({ code: "custom", message: "Mock不得改名真实API" });

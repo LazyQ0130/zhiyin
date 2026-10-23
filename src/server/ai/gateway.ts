@@ -4,6 +4,7 @@ import type { PracticeBankItem } from "../domain/practice-bank";
 import { AliyunGateway } from "./providers/aliyun";
 import { MockGateway } from "./providers/mock";
 import { boundedInteger } from "./configuration";
+import type {AssistanceReview} from "../domain/assistance-review";
 
 export interface DiagnosisContext {
   questionId: string;
@@ -11,7 +12,7 @@ export interface DiagnosisContext {
   subject: string;
   gradeBand: string;
   steps: Array<{ id: string; text: string }>;
-  messages: Array<{ id: string; role: "USER" | "ASSISTANT"; content: string }>;
+  messages: Array<{ id: string; role: "USER" | "ASSISTANT"; content: string; assistance?: AssistanceReview }>;
   findings: DiagnosisFinding[];
   turnCount: number;
   hintLevel: 0 | 1 | 2 | 3;

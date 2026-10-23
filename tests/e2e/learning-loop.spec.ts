@@ -1,5 +1,5 @@
 import { test, expect, type Page, type TestInfo } from "@playwright/test";
-import type { SessionDTO } from "../../src/lib/contracts";
+import type { PracticeDTO, SessionDTO, SubmissionDTO } from "../../src/lib/contracts";
 import { exampleProcess, exampleQuestion, inviteCode, key, readData, testPassword } from "../integration/helpers";
 
 async function capture(page: Page, testInfo: TestInfo, name: string) {
@@ -46,11 +46,22 @@ test("A01/A02/A06/A08/A11/A12/A14/A17/A19/A20 complete visible learning loop", a
   // The API remains a real server/DB check; no network response is mocked.
   const before = await readData<SessionDTO>(await page.request.get(`/api/v1/diagnoses/${sessionId}`));
   expect(before.messages.at(-1)?.referencedStepIds).toContain(before.steps[1].id);
+  expect(before.findings.length).toBeGreaterThan(0);
+  for (const finding of before.findings) {
+    expect(finding.trust).toBeDefined();
+    expect(["OBSERVATION", "HYPOTHESIS", "VERIFIED", "INCONCLUSIVE"]).toContain(finding.trust?.kind);
+    expect(finding.trust?.verification.basis).toBeDefined();
+    expect(finding.trust?.rootCause.role).toBeDefined();
+  }
+  const assistant = before.messages.filter((message) => message.role.toLowerCase() === "assistant").at(-1);
+  expect(assistant?.assistance?.source).toBe("SERVER_CONTENT_REVIEW_V1");
+  expect(["CLEAR", "DETECTED", "UNCERTAIN"]).toContain(assistant?.assistance?.status);
   await page.reload();
   const afterReload = await readData<SessionDTO>(await page.request.get(`/api/v1/diagnoses/${sessionId}`));
   expect(afterReload.messages.map((message) => message.id)).toEqual(before.messages.map((message) => message.id));
   const reply = page.getByLabel("诊断回复", { exact: true });
   await expect(reply).toBeVisible();
+  await expect(page.getByText(/本轮至少提供|帮助内容尚无法可靠分级/).first()).toBeVisible();
   await capture(page, testInfo, "03-diagnosis-questioning");
   await reply.fill("-24");
   let submittedTurns = 0;
@@ -69,14 +80,37 @@ test("A01/A02/A06/A08/A11/A12/A14/A17/A19/A20 complete visible learning loop", a
   await expect(reply).toHaveValue(/\n/);
   await reply.press("Enter");
   await expect.poll(() => submittedTurns).toBe(1);
-  await expect(page.getByText(/‘不理解负号规则’的假设受到反证|原判别式中的符号与规则计算不一致/).first()).toBeVisible();
+  const report = page.getByRole("region", { name: "诊断报告", exact: true });
+  await expect(report).toBeVisible();
+  const revised = await readData<SessionDTO>(await page.request.get(`/api/v1/diagnoses/${sessionId}`));
+  const cause = revised.findings.find(finding => finding.category === "KNOWLEDGE");
+  // Unknown help in the preceding question permits weakening, not independent verification.
+  expect(cause).toMatchObject({ status: "UNRESOLVED", trust: { kind: "INCONCLUSIVE", verification: { state: "WEAKENED" } } });
+  await expect(report.locator(".finding-labels").filter({ hasText: /观察|已核验事实/ }).first()).toBeVisible();
+  await expect(report.locator(".finding-uncertainty").filter({ hasText: /待确认/ }).first()).toBeVisible();
+  await expect(report.getByText(/候选根因/).first()).toBeVisible();
+  await capture(page, testInfo, "03b-diagnosis-report-trust");
   await page.getByRole("button", { name: /开始针对训练|开始训练|生成针对训练/ }).click();
   await expect(page).toHaveURL(/\/practice\/[^/]+$/);
+  const setId = page.url().split("/").at(-1)!;
+  const practice = await readData<PracticeDTO>(await page.request.get(`/api/v1/practice-sets/${setId}`));
+  const itemId = practice.items[0].id;
   await page.getByLabel("我的计算过程", { exact: true }).fill("17");
   await capture(page, testInfo, "04-practice-before-submission");
   await page.getByRole("button", { name: "暂时不会，获取提示", exact: true }).click();
+  const submissionResponse = page.waitForResponse(response => response.request().method() === "POST" && response.url().endsWith(`/practice-items/${itemId}/submissions`));
   await page.getByRole("button", { name: "提交并验证", exact: true }).click();
+  const submittedResponse = await submissionResponse;
+  expect(submittedResponse.ok()).toBe(true);
+  const submittedBody: {data: SubmissionDTO;requestId: string;error?: unknown} = await submittedResponse.json();
+  expect(submittedBody.requestId).toEqual(expect.any(String));
+  expect(submittedBody.error).toBeUndefined();
+  const submitted = submittedBody.data;
+  expect(submitted.independence).toBe("ASSISTED");
+  expect(submitted.assistance).not.toBe("INDEPENDENT");
+  expect(submitted.masteryState).not.toBe("PASSED_CURRENT_PROBE");
   await expect(page.getByText(/有提示|使用提示|已使用提示/).first()).toBeVisible();
+  await expect(page.getByText("本题已记录辅助，数值正确也不计为独立通过。", { exact: true })).toBeVisible();
 
   await page.goto("/records");
   await expect(page.locator(`a[href="/records/${sessionId}"]`)).toBeVisible();
