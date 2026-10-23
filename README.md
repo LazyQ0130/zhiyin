@@ -18,6 +18,8 @@ npm run local
 
 ## 开发与验收命令
 
+M6 已增加教师标注/离线评分与受控真实测试基础：`npm run eval:validate`、`npm run eval:demo`、`npm run eval:plan`、`npm run test:faults`。真实调用必须另有明确人工授权与配置；默认不调用付费模型。见 [教师评测规范](docs/M6-评测与教师标注规范.md)、[受控调用说明](docs/M6-真实模型受控测试.md)、[M6交付报告](docs/reports/M6-delivery.md) 和 [发布阻塞清单](docs/reports/M6-release-blockers.md)。
+
 ```powershell
 npm run typecheck
 npm run lint

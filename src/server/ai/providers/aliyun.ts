@@ -5,6 +5,7 @@ import { recognitionResultSchema, type DiagnosisTurn, type RecognitionResult } f
 import { DIAGNOSIS_PROMPT_VERSION, DIAGNOSIS_SYSTEM_PROMPT } from "../prompts/diagnosis-v1";
 import { deterministicToolResults, validateDiagnosisTurn } from "../validate-turn";
 import { selectPracticeItems } from "../../domain/practice-bank";
+import { aliyunEndpoint } from "../configuration";
 
 type ChatMessage = { role: "system" | "user"; content: string | Array<{type:"text";text:string}|{type:"image_url";image_url:{url:string}}> };
 export interface AliyunOptions {
@@ -16,6 +17,7 @@ export interface AliyunOptions {
   fetchImpl?: typeof fetch;
   sleep?: (ms: number) => Promise<void>;
   random?: () => number;
+  maxCompletionTokens?: number;
 }
 const circuits = new Map<string, { failures: number; openUntil: number }>();
 
@@ -28,12 +30,10 @@ export class AliyunGateway implements ModelGateway {
   private readonly fetchImpl: typeof fetch;
   constructor(private readonly options: AliyunOptions) {
     if (!options.apiKey.trim()) throw new GatewayError("AI_NOT_CONFIGURED", "真实模型尚未配置，请联系试测管理员。");
-    let base: URL;
-    try {base = new URL(options.baseUrl ?? "https://dashscope.aliyuncs.com/compatible-mode/v1");}
+    try {this.endpoint = aliyunEndpoint(options.baseUrl ?? "https://dashscope.aliyuncs.com/compatible-mode/v1");}
     catch {throw new GatewayError("AI_NOT_CONFIGURED", "模型服务地址配置不正确。");}
-    if (base.protocol !== "https:" || !base.hostname.endsWith(".aliyuncs.com") || base.username || base.password || base.search || base.hash) throw new GatewayError("AI_NOT_CONFIGURED", "请使用阿里云官方 HTTPS 模型服务地址。");
-    this.endpoint = `${base.toString().replace(/\/$/, "")}/chat/completions`;
     this.model = options.model ?? "qwen3.8-flash";
+    if (!Number.isInteger(options.maxCompletionTokens ?? 2500) || (options.maxCompletionTokens ?? 2500) < 128 || (options.maxCompletionTokens ?? 2500) > 2500) throw new GatewayError("AI_NOT_CONFIGURED", "模型输出上限配置不正确。");
     this.fetchImpl = options.fetchImpl ?? fetch;
   }
 
@@ -81,8 +81,8 @@ export class AliyunGateway implements ModelGateway {
         const request = async () => {
           const response = await this.fetchImpl(this.endpoint,{
             method:"POST", headers:{Authorization:`Bearer ${this.options.apiKey}`,"Content-Type":"application/json"},
-            signal:controller.signal,
-            body:JSON.stringify({model:this.model,messages,stream:false,enable_thinking:false,response_format:{type:"json_object"},max_tokens:2500}),
+            signal:controller.signal,redirect:"error",
+            body:JSON.stringify({model:this.model,messages,stream:false,enable_thinking:false,response_format:{type:"json_object"},max_completion_tokens:this.options.maxCompletionTokens ?? 2500}),
           });
           if (!response.ok) {
             retryable = response.status === 429 || response.status >= 500;
@@ -97,7 +97,7 @@ export class AliyunGateway implements ModelGateway {
           if (typeof result.usage?.prompt_tokens === "number" && Number.isSafeInteger(result.usage.prompt_tokens) && result.usage.prompt_tokens>=0) inputTokens=(inputTokens??0)+result.usage.prompt_tokens;
           if (typeof result.usage?.completion_tokens === "number" && Number.isSafeInteger(result.usage.completion_tokens) && result.usage.completion_tokens>=0) outputTokens=(outputTokens??0)+result.usage.completion_tokens;
           const choice = result.choices?.[0];
-          if (choice?.finish_reason === "length" || typeof choice?.message?.content !== "string") throw new GatewayError("AI_INVALID_OUTPUT", "模型回复不完整，请重试。");
+          if (choice?.finish_reason !== "stop" || typeof choice?.message?.content !== "string") throw new GatewayError("AI_INVALID_OUTPUT", "模型回复不完整，请重试。");
           try { return validate(JSON.parse(choice.message.content)); }
           catch { throw new GatewayError("AI_INVALID_OUTPUT", "模型返回内容未通过校验，请重试。你的输入已保留。"); }
         };

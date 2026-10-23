@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "authorizationId": "REPLACE_WITH_NEW_UUID",
+  "approved": false,
+  "approvedBy": "REPLACE_WITH_ACCOUNT_OWNER_APPROVAL",
+  "issuedAt": "REPLACE_WITH_CURRENT_UTC_ISO_TIME",
+  "expiresAt": "REPLACE_WITH_UTC_WITHIN_24_HOURS",
+  "datasetHash": "REPLACE_WITH_EVAL_PLAN_HASH",
+  "caseIds": ["sign-error"],
+  "model": "qwen3.8-flash",
+  "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  "maxRequests": 1,
+  "maxSpendCny": 1,
+  "maxCompletionTokens": 2500,
+  "maxRequestBytes": 20000,
+  "pricing": {
+    "currency": "CNY",
+    "inputPerMillion": 0.8,
+    "outputPerMillion": 2.7,
+    "source": "https://help.aliyun.com/zh/model-studio/qwen3-8-flash",
+    "verifiedAt": "REPLACE_AFTER_RECHECKING_CURRENT_OFFICIAL_PRICES",
+    "region": "cn-beijing"
+  }
+}

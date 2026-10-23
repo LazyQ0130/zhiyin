@@ -3,6 +3,7 @@ import type { DiagnosisFinding, DiagnosisTurn, FindingCategory, RecognitionResul
 import type { PracticeBankItem } from "../domain/practice-bank";
 import { AliyunGateway } from "./providers/aliyun";
 import { MockGateway } from "./providers/mock";
+import { boundedInteger } from "./configuration";
 
 export interface DiagnosisContext {
   questionId: string;
@@ -61,6 +62,8 @@ export function createGateway(): ModelGateway {
     apiKey: process.env.ALIYUN_API_KEY ?? process.env.DASHSCOPE_API_KEY ?? "",
     baseUrl: process.env.ALIYUN_BASE_URL ?? process.env.DASHSCOPE_BASE_URL ?? "https://dashscope.aliyuncs.com/compatible-mode/v1",
     model: process.env.AI_DEFAULT_MODEL ?? process.env.AI_PRIMARY_MODEL ?? "qwen3.8-flash",
+    timeoutMs: boundedInteger("AI_REQUEST_TIMEOUT_MS",25000,100,60000),
+    maxRetries: boundedInteger("AI_MAX_RETRIES",1,0,1),
   });
 }
 export type { DiagnosisTurn, DiagnosisFinding, RecognitionResult } from "./schemas/diagnosis";

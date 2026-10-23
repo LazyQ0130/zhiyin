@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "1.0",
+  "datasetId": "m6-engineering-demo",
+  "datasetVersion": "2026-10-23.1",
+  "datasetHash": "e2769d53d58bda9e2464c94471d0dab39766cb17950373b239352001ff9cb74b",
+  "annotations": [
+    {
+      "caseId": "sign-error",
+      "inputHash": "b4cad37212baece3ddc971dc1a4a7ff5845f495c897cc96cb398d7535cdb7ec8",
+      "provenance": "ENGINEERING_PROVISIONAL",
+      "expected": {
+        "acceptableStepIdSets": [
+          [
+            "s2"
+          ]
+        ],
+        "acceptableCategorySets": [
+          [
+            "EXECUTION",
+            "KNOWLEDGE"
+          ]
+        ],
+        "allowedActions": [
+          "ASK_ONE_QUESTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiredEvidence": [
+          {
+            "kind": "STUDENT_STEP",
+            "sourceId": "s2"
+          }
+        ],
+        "rationale": "观测到判别式符号差异；初始错因仅是假设。类别集合是工程粗分类一致性，不证明心理原因。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "missing-steps",
+      "inputHash": "a45278c102a1b3e7052f77f37b273e365725314232a98a71b8322c0815c0f5e5",
+      "provenance": "ENGINEERING_PROVISIONAL",
+      "expected": {
+        "acceptableStepIdSets": [
+          []
+        ],
+        "acceptableCategorySets": [
+          []
+        ],
+        "allowedActions": [
+          "ASK_ONE_QUESTION",
+          "MARK_INCONCLUSIVE"
+        ],
+        "requiresAbstention": null,
+        "noErrorExpected": true,
+        "requiredEvidence": [],
+        "rationale": "没有过程不能编造错误；先补过程或保留待确认。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "correct-steps",
+      "inputHash": "4e150cf377736bba2f0e59083344b4133bc2bdd2f763c002df232e9483d84e61",
+      "provenance": "ENGINEERING_PROVISIONAL",
+      "expected": {
+        "acceptableStepIdSets": null,
+        "acceptableCategorySets": [
+          []
+        ],
+        "allowedActions": [
+          "ASK_ONE_QUESTION",
+          "FINISH_REPORT"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": true,
+        "requiredEvidence": [],
+        "rationale": "正确已提供步骤不能为生成报告而编造错误；可追问核验。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "counterevidence",
+      "inputHash": "315d9e71b9710c47d4cce16d7fdddb4debae11b8e5a65b7b224b252f9fdb26aa",
+      "provenance": "ENGINEERING_PROVISIONAL",
+      "expected": {
+        "acceptableStepIdSets": [
+          [
+            "s1"
+          ]
+        ],
+        "acceptableCategorySets": [
+          [
+            "EXECUTION"
+          ]
+        ],
+        "allowedActions": [
+          "FINISH_REPORT"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiredEvidence": [
+          {
+            "kind": "STUDENT_REPLY",
+            "sourceId": "r1"
+          }
+        ],
+        "rationale": "后续正确核算反证规则不理解假设；不能宣布长期掌握。REFUTED不计活跃错因类别。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "boundary-reading",
+      "inputHash": "46709cd73a5b904f825b9bd6b1456fd34e78a38ca5dae35a1f884bc2554b751a",
+      "provenance": "ENGINEERING_PROVISIONAL",
+      "expected": {
+        "acceptableStepIdSets": [
+          [
+            "s1"
+          ]
+        ],
+        "acceptableCategorySets": [
+          [
+            "READING"
+          ]
+        ],
+        "allowedActions": [
+          "ASK_ONE_QUESTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiredEvidence": [
+          {
+            "kind": "STUDENT_STEP",
+            "sourceId": "s1"
+          }
+        ],
+        "rationale": "至少包含等于；应追问边界理解，工程仅核对粗类。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "unsupported-abstention",
+      "inputHash": "c8c92ae499617a00a8854a8f46ad70748b2bcc445638b4d4c369add6964ff472",
+      "provenance": "ENGINEERING_PROVISIONAL",
+      "expected": {
+        "acceptableStepIdSets": [
+          []
+        ],
+        "acceptableCategorySets": [
+          []
+        ],
+        "allowedActions": [
+          "MARK_INCONCLUSIVE"
+        ],
+        "requiresAbstention": true,
+        "noErrorExpected": true,
+        "requiredEvidence": [],
+        "rationale": "超出已验证演示范围；题面指令作为材料，不执行。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    }
+  ]
+}

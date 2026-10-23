@@ -20,7 +20,15 @@
     "db:seed": "tsx prisma/seed.ts",
     "setup": "node scripts/setup.mjs",
     "local": "node scripts/local.mjs",
-    "eval": "tsx scripts/eval/run.ts"
+    "eval": "tsx scripts/eval/run.ts",
+    "eval:validate": "tsx scripts/eval/offline.ts validate tests/evaluation/engineering.inputs.json tests/evaluation/engineering.annotations.json",
+    "eval:score": "tsx scripts/eval/offline.ts score",
+    "eval:demo": "tsx scripts/eval/demo.ts",
+    "eval:plan": "tsx scripts/eval/controlled.ts",
+    "eval:live": "tsx scripts/eval/controlled.ts --execute",
+    "test:faults": "node scripts/m6/run-fault-tests.mjs",
+    "test:production": "node scripts/m6/run-production-regression.cjs",
+    "security:staged": "node scripts/security-scan-git.mjs"
   },
   "dependencies": {
     "@node-rs/argon2": "2.2.2",

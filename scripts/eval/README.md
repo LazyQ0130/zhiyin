@@ -6,7 +6,9 @@
 
 `tests/unit/domain-gateway.test.ts` 通过注入 fetch 覆盖模型超时、非法 JSON、一次有限重试、401/429、usage 与不泄漏错误正文。所有测试使用明显的占位凭证，不调用付费模型。
 
-真实协议烟雾测试入口为 `npx tsx scripts/eval/live-smoke.ts`。它读取服务器 `.env`；只有显式设置 `AI_MODE=live` 且存在 `ALIYUN_API_KEY` 才调用真实服务。缺少条件时退出码为 2，绝不静默退回 Mock。真实调用可能产生供应商费用，输出只有结构化状态和 usage，不输出凭证、题目正文或供应商错误原文。
+M6 已用受控入口替代仅靠环境变量的烟雾测试。`npm run eval:plan` 零网络；`npm run eval:live -- --permit .local/live-permit.json --case sign-error` 必须同时具备一次性、限时、绑定数据集/模型/地域/费用的人工授权文件与显式 live/key 配置，缺条件时拒绝，绝不静默退回 Mock。旧 `npx tsx scripts/eval/live-smoke.ts` 也转至相同门禁，不能绕过授权。完整说明见 [受控调用说明](../../docs/M6-真实模型受控测试.md)。
+
+正式格式与评分见 [教师规范](../../docs/M6-评测与教师标注规范.md)。`eval:validate` 校验 inputs 与独立标签，`eval:demo` 仅运行六条合成 Mock；`eval:score` 按输入/输出hash与审核信息评分。工程标签、教师金标、人工输出质量评分独立存储；未审核指标不计分。所有新运行结果放忽略目录 `.local`，不得提交私人学习数据。
 
 2026-10-23 核验的官方接口资料：
 

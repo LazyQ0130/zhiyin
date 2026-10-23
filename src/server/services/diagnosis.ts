@@ -8,6 +8,7 @@ import {createGateway,GatewayError,type DiagnosisContext} from '@/server/ai/gate
 import {findingSchema,type DiagnosisTurn} from '@/server/ai/schemas/diagnosis';
 import {validateDiagnosisTurn} from '@/server/ai/validate-turn';
 import {transitionDiagnosis,stateForAction,type DiagnosisState} from '@/server/domain/diagnosis-fsm';
+import {boundedInteger} from '@/server/ai/configuration';
 
 export async function startDiagnosis(userId:string,attemptId:string,key:string){
   const a=await db.attempt.findFirst({where:{id:attemptId,userId,problem:{deletedAt:null}},include:{revision:true}});if(!a)throw new AppError('NOT_FOUND','没有找到已确认的作答。',404);
@@ -16,7 +17,7 @@ export async function startDiagnosis(userId:string,attemptId:string,key:string){
     const existing=await tx.diagnosisSession.findUnique({where:{attemptId}});if(existing){if(existing.deletedAt)throw new AppError('NOT_FOUND','记录已移除。',404);return existing.id;}
     const dayStart=new Date();dayStart.setUTCHours(0,0,0,0);
     const count=await tx.diagnosisSession.count({where:{userId,createdAt:{gte:dayStart}}});
-    if(count>=Number(process.env.MAX_DAILY_DIAGNOSES??30))throw new AppError('QUOTA_EXCEEDED','今天的诊断额度已用完，请明天继续。',429);
+    if(count>=boundedInteger('MAX_DAILY_DIAGNOSES',30,1,30))throw new AppError('QUOTA_EXCEEDED','今天的诊断额度已用完，请明天继续。',429);
     const s=await tx.diagnosisSession.create({data:{userId,attemptId,modelRoute:process.env.AI_MODE==='live'?'aliyun':'mock',isDemo:process.env.AI_MODE!=='live'}});return s.id;
   });
   const s=await getSession(userId,id);
@@ -43,7 +44,7 @@ export async function runTurn(userId:string,id:string,key:string,input:TurnInput
     if(old?.status==='COMPLETED')return {cached:true as const,key:effectiveKey,input:effective,state:s.status as DiagnosisState};
     if(['REPORT_READY','INCONCLUSIVE','CANCELED'].includes(s.status))throw new AppError('INVALID_STATE_TRANSITION','本次诊断已结束，请开始新的诊断。',409);
     if(s.lockUntil&&s.lockUntil>new Date())throw new AppError('SESSION_BUSY','正在分析上一条回复，请稍候。',409);
-    const limit=Number(process.env.MAX_DIAGNOSIS_TURNS??6);
+    const limit=boundedInteger('MAX_DIAGNOSIS_TURNS',6,1,6);
     if(s.turnCount>=limit)effective={...effective,action:'FINISH'};
     let from=s.status as DiagnosisState;
     if(['ANALYZING','EVALUATING'].includes(from))from='FAILED_RETRYABLE';

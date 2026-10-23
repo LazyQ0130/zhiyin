@@ -2,6 +2,7 @@ import { describe, expect, it, vi, afterEach } from "vitest";
 import { AliyunGateway } from "../../src/server/ai/providers/aliyun";
 import { createGateway, type DiagnosisContext } from "../../src/server/ai/gateway";
 import { MockGateway } from "../../src/server/ai/providers/mock";
+import { aliyunEndpoint, boundedInteger } from "../../src/server/ai/configuration";
 
 const input: DiagnosisContext={questionId:"q1",questionText:"解 x²-5x+6=0。",subject:"MATH",gradeBand:"HIGH_SCHOOL",steps:[{id:"s1",text:"Δ=25+24=49"}],messages:[],findings:[],turnCount:0,hintLevel:0};
 const fakeKey="UNIT_TEST_PLACEHOLDER_NOT_A_CREDENTIAL";
@@ -24,6 +25,7 @@ describe("Aliyun Gateway contract without paid calls",()=>{
     const init=fetchImpl.mock.calls[0][1];
     const body=JSON.parse(String(init?.body));
     expect(body.model).toBe("qwen3.8-flash");expect(body.response_format.type).toBe("json_object");expect(body.enable_thinking).toBe(false);
+    expect(body.max_completion_tokens).toBe(2500);expect(body.max_tokens).toBeUndefined();expect(init?.redirect).toBe("error");
     expect(gateway.lastInvocation).toMatchObject({inputTokens:31,outputTokens:47,attempts:1,status:"SUCCESS",costEstimate:null});
     expect(JSON.stringify(gateway.lastInvocation)).not.toContain(fakeKey);
   });
@@ -68,5 +70,22 @@ describe("Aliyun Gateway contract without paid calls",()=>{
     vi.stubEnv("NODE_ENV","production");vi.stubEnv("AI_MODE","mock");vi.stubEnv("ALLOW_MOCK_IN_PRODUCTION","");
     expect(()=>createGateway()).toThrow();
     vi.stubEnv("ALLOW_MOCK_IN_PRODUCTION","true");expect(createGateway().mode).toBe("mock");
+  });
+  it("rejects arbitrary Aliyun domains, ports, query strings, and non-API paths",()=>{
+    for(const base of ["https://oss-cn-beijing.aliyuncs.com/compatible-mode/v1","https://dashscope.aliyuncs.com:444/compatible-mode/v1","https://dashscope.aliyuncs.com/private","https://dashscope.aliyuncs.com/compatible-mode/v1?x=1"]){
+      expect(()=>aliyunEndpoint(base)).toThrow();
+    }
+    expect(aliyunEndpoint("https://sample.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/")).toBe("https://sample.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions");
+  });
+  it("rejects missing/refused/truncated completion finish reasons",async()=>{
+    for(const reason of [undefined,"length","content_filter","tool_calls"]){
+      const response=await validEnvelope();response.choices[0].finish_reason=reason as string;
+      await expect(new AliyunGateway({apiKey:fakeKey,fetchImpl:async()=>Response.json(response),maxRetries:0}).createDiagnosisTurn(input)).rejects.toMatchObject({code:"AI_INVALID_OUTPUT"});
+    }
+  });
+  it("fails closed for NaN, negative, zero, and oversized operational limits",()=>{
+    expect(boundedInteger('M6_TEST_LIMIT',6,1,6)).toBe(6);
+    for(const raw of ['NaN','1.5','-1','0','7','']) {vi.stubEnv('M6_TEST_LIMIT',raw);expect(()=>boundedInteger('M6_TEST_LIMIT',6,1,6)).toThrow();}
+    vi.stubEnv('M6_TEST_LIMIT','3');expect(boundedInteger('M6_TEST_LIMIT',6,1,6)).toBe(3);
   });
 });
