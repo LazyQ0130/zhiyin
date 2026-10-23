@@ -15,4 +15,3 @@ const {Client}=require('pg');const {randomBytes}=require('crypto');const {spawn,
   fs.writeFileSync(path.join(dir,'summary.json'),JSON.stringify({status,database:name,mode:'PRODUCTION_BUILD_MOCK',paidCalls:0,databasePreserved:true,frequencyLimitsUnchanged:true,build:env.NEXT_DIST_DIR},null,2));console.log(JSON.stringify({status,evidence:dir}));process.exitCode=status??1;
  }finally{spawnSync('taskkill',['/PID',String(server.pid),'/T','/F'],{stdio:'ignore'});log.end()}
 })().catch(e=>{console.error(e.message);process.exitCode=1});
-
