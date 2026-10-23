@@ -1,0 +1,1924 @@
+{
+  "schemaVersion": "1.0",
+  "datasetId": "m7-math-author-created-candidates",
+  "version": "2026-10-23.2",
+  "provenance": "AUTHOR_CREATED_PROVISIONAL",
+  "description": "40条项目原创数学教学诊断候选案例；debug24/blind16按题族隔离；全部未经教师审核，非真实学生原文，不可作为教师金标或教育质量统计。",
+  "cases": [
+    {
+      "id": "m7-d01",
+      "familyId": "linear_equation_expansion",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "correct",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d01；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:linear_equation_expansion",
+        "scenario:correct"
+      ],
+      "initialContext": {
+        "questionId": "m7-d01-q",
+        "questionText": "解方程 3(x−2)=2x+5。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d01-s1",
+            "text": "3x−6=2x+5"
+          },
+          {
+            "id": "m7-d01-s2",
+            "text": "3x−2x=5+6，得到x=11"
+          },
+          {
+            "id": "m7-d01-s3",
+            "text": "检验：3(11−2)=27，2×11+5=27"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d01-r1",
+          "content": "我先对括号内的两项都乘3，再把含x的项放到左边。"
+        },
+        {
+          "id": "m7-d01-r2",
+          "content": "代回原式两边都是27，所以我保留x=11。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d02",
+      "familyId": "right_triangle_area",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "correct",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d02；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:right_triangle_area",
+        "scenario:correct"
+      ],
+      "initialContext": {
+        "questionId": "m7-d02-q",
+        "questionText": "一个直角三角形两条直角边分别为6厘米和8厘米，求面积。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d02-s1",
+            "text": "两条直角边互相垂直，取6为底、8为高"
+          },
+          {
+            "id": "m7-d02-s2",
+            "text": "S=6×8÷2=24平方厘米"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d02-r1",
+          "content": "我选的底和高是互相垂直的两条边，不需要把斜边当高。"
+        },
+        {
+          "id": "m7-d02-r2",
+          "content": "如果用8作底，6作高，面积还是24平方厘米。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d03",
+      "familyId": "univariate_median",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "correct",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d03；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:univariate_median",
+        "scenario:correct"
+      ],
+      "initialContext": {
+        "questionId": "m7-d03-q",
+        "questionText": "数据3、6、6、8、12的中位数和平均数分别是多少？",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d03-s1",
+            "text": "按从小到大排列仍为3、6、6、8、12，中间第3个数是6"
+          },
+          {
+            "id": "m7-d03-s2",
+            "text": "平均数=(3+6+6+8+12)÷5=7"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d03-r1",
+          "content": "中位数看排序后的位置，平均数把五个数据全部相加再除以5。"
+        },
+        {
+          "id": "m7-d03-r2",
+          "content": "两个6都要算作一个数据，不能去掉重复值。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d04",
+      "familyId": "radical_rational_domain",
+      "subject": "MATH",
+      "gradeBand": "GRADE_10_12",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "correct",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d04；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:radical_rational_domain",
+        "scenario:correct"
+      ],
+      "initialContext": {
+        "questionId": "m7-d04-q",
+        "questionText": "求函数 f(x)=√(x−2)/(x−5) 的定义域。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_10_12",
+        "steps": [
+          {
+            "id": "m7-d04-s1",
+            "text": "根号内x−2≥0，得x≥2"
+          },
+          {
+            "id": "m7-d04-s2",
+            "text": "分母x−5≠0，得x≠5"
+          },
+          {
+            "id": "m7-d04-s3",
+            "text": "定义域为[2,5)∪(5,+∞)"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d04-r1",
+          "content": "x=2时根号为0，分母为−3，可以取；x=5时分母为0，不能取。"
+        },
+        {
+          "id": "m7-d04-r2",
+          "content": "我需要同时满足根号和分母两个条件。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d05",
+      "familyId": "signed_integer_arithmetic",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "calculation_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d05；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:signed_integer_arithmetic",
+        "scenario:calculation_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-d05-q",
+        "questionText": "计算 −8+3×(−2)。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d05-s1",
+            "text": "先乘法：3×(−2)=−6"
+          },
+          {
+            "id": "m7-d05-s2",
+            "text": "−8+(−6)=−2"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d05-r1",
+          "content": "我知道两个负数相加应该更小，刚才把8−6的结果写上去了。"
+        },
+        {
+          "id": "m7-d05-r2",
+          "content": "重算是−14；我能在数轴上从−8向左走6格。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d06",
+      "familyId": "fraction_common_denominator",
+      "subject": "MATH",
+      "gradeBand": "GRADE_5_6",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "calculation_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d06；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:fraction_common_denominator",
+        "scenario:calculation_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-d06-q",
+        "questionText": "计算 2/3+1/4。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_5_6",
+        "steps": [
+          {
+            "id": "m7-d06-s1",
+            "text": "通分：2/3=8/12，1/4=3/12"
+          },
+          {
+            "id": "m7-d06-s2",
+            "text": "相加得(8+3)/12=10/12"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d06-r1",
+          "content": "分母相同后加分子，8+3我写成了10。"
+        },
+        {
+          "id": "m7-d06-r2",
+          "content": "应是11/12，不能再约分，因为11和12没有大于1的公因数。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d07",
+      "familyId": "percentage_discount",
+      "subject": "MATH",
+      "gradeBand": "GRADE_5_6",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "calculation_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d07；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:percentage_discount",
+        "scenario:calculation_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-d07-q",
+        "questionText": "一件商品原价80元，降价15%，现价是多少元？",
+        "subject": "MATH",
+        "gradeBand": "GRADE_5_6",
+        "steps": [
+          {
+            "id": "m7-d07-s1",
+            "text": "降价金额=80×15%=10元"
+          },
+          {
+            "id": "m7-d07-s2",
+            "text": "现价=80−10=70元"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d07-r1",
+          "content": "15%是0.15，我在80乘0.15这里算错了，不是减去15元。"
+        },
+        {
+          "id": "m7-d07-r2",
+          "content": "降价12元，所以现价68元。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d08",
+      "familyId": "linear_system_elimination",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "calculation_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d08；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:linear_system_elimination",
+        "scenario:calculation_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-d08-q",
+        "questionText": "解方程组：2x+y=7，x−y=2。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d08-s1",
+            "text": "两式相加，得3x=9"
+          },
+          {
+            "id": "m7-d08-s2",
+            "text": "x=9÷3=2"
+          },
+          {
+            "id": "m7-d08-s3",
+            "text": "代入x−y=2，得y=0"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d08-r1",
+          "content": "相加时y和−y抵消了；是9除以3写错。"
+        },
+        {
+          "id": "m7-d08-r2",
+          "content": "改为x=3，代回得y=1，两条原方程都成立。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d09",
+      "familyId": "same_base_exponent_product",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "conceptual_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d09；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:same_base_exponent_product",
+        "scenario:conceptual_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-d09-q",
+        "questionText": "化简 a²·a³，并说明依据。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d09-s1",
+            "text": "同底数幂相乘，指数相乘，所以a²·a³=a⁶"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d09-r1",
+          "content": "我以为看到乘号就把2和3相乘。"
+        },
+        {
+          "id": "m7-d09-r2",
+          "content": "展开后是(a×a)×(a×a×a)，一共5个a，所以应为a⁵。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d10",
+      "familyId": "square_equation_dual_roots",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "conceptual_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d10；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:square_equation_dual_roots",
+        "scenario:conceptual_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-d10-q",
+        "questionText": "在实数范围内解方程 x²=49。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d10-s1",
+            "text": "开平方得x=7，因此方程只有一个解7"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d10-r1",
+          "content": "我把√49=7直接当成了方程的全部解。"
+        },
+        {
+          "id": "m7-d10-r2",
+          "content": "−7的平方也是49，所以解应是x=±7。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d11",
+      "familyId": "probability_without_replacement",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "conceptual_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d11；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:probability_without_replacement",
+        "scenario:conceptual_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-d11-q",
+        "questionText": "袋中有3个红球和2个蓝球，不放回地连续抽2个球，求两次都是红球的概率。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d11-s1",
+            "text": "第一次红球概率是3/5"
+          },
+          {
+            "id": "m7-d11-s2",
+            "text": "第二次还是红球的概率是3/5，因为每次摸球都一样"
+          },
+          {
+            "id": "m7-d11-s3",
+            "text": "两次都是红球的概率为3/5×3/5=9/25"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d11-r1",
+          "content": "我没有考虑第一次红球拿走后，袋子里只剩2红2蓝。"
+        },
+        {
+          "id": "m7-d11-r2",
+          "content": "第二次条件概率应是2/4，所以乘起来是3/10。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d12",
+      "familyId": "negative_inequality_direction",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "conceptual_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d12；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:negative_inequality_direction",
+        "scenario:conceptual_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-d12-q",
+        "questionText": "解不等式 −2x>6。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d12-s1",
+            "text": "两边同时除以−2，得到x>−3"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d12-r1",
+          "content": "我记得同除一个数两边一起做，但没想过除负数时方向要变。"
+        },
+        {
+          "id": "m7-d12-r2",
+          "content": "例如x=0不满足原式；我改成x<−3，取−4时8>6成立。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d13",
+      "familyId": "rational_equation_excluded_value",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "method_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d13；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:rational_equation_excluded_value",
+        "scenario:method_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-d13-q",
+        "questionText": "解方程 (x²−9)/(x−3)=6。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d13-s1",
+            "text": "x²−9=(x−3)(x+3)"
+          },
+          {
+            "id": "m7-d13-s2",
+            "text": "约去x−3，得到x+3=6"
+          },
+          {
+            "id": "m7-d13-s3",
+            "text": "解得x=3，作为原方程的解"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d13-r1",
+          "content": "我只解了约分后的式子，没有检查原来的分母。"
+        },
+        {
+          "id": "m7-d13-r2",
+          "content": "x=3会让原分母为0；这个候选不合法，因此原方程无解。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d14",
+      "familyId": "isosceles_triangle_altitude",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "method_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d14；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:isosceles_triangle_altitude",
+        "scenario:method_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-d14-q",
+        "questionText": "等腰三角形的两腰均为13厘米，底边为10厘米，求面积。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d14-s1",
+            "text": "以底边10作底，腰长13就是高"
+          },
+          {
+            "id": "m7-d14-s2",
+            "text": "S=10×13÷2=65平方厘米"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d14-r1",
+          "content": "我把相邻的一条边直接当作高，没有检查垂直。"
+        },
+        {
+          "id": "m7-d14-r2",
+          "content": "从顶点作高后底边被分成5和5，高是√(13²−5²)=12，面积60。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d15",
+      "familyId": "quadratic_vertex_minimum",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "method_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d15；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:quadratic_vertex_minimum",
+        "scenario:method_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-d15-q",
+        "questionText": "求二次函数 y=x²−4x+7 在实数范围内的最小值。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d15-s1",
+            "text": "常数项是7，所以函数最小值就是7"
+          },
+          {
+            "id": "m7-d15-s2",
+            "text": "取x=0时y=7，检验成立"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d15-r1",
+          "content": "我只代入了0，没有说明其他x时不会更小。"
+        },
+        {
+          "id": "m7-d15-r2",
+          "content": "配方得y=(x−2)²+3，所以在x=2时最小值为3。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d16",
+      "familyId": "quadratic_discriminant_formula",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "multiple_errors",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d16；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:quadratic_discriminant_formula",
+        "scenario:multiple_errors"
+      ],
+      "initialContext": {
+        "questionId": "m7-d16-q",
+        "questionText": "解一元二次方程 x²−5x+6=0。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d16-s1",
+            "text": "a=1，b=−5，c=6；Δ=(−5)²+4×1×6=49"
+          },
+          {
+            "id": "m7-d16-s2",
+            "text": "求根公式x=(5±7)/1"
+          },
+          {
+            "id": "m7-d16-s3",
+            "text": "两个解为12和−2"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d16-r1",
+          "content": "我把Δ里的−4ac写成了+4ac，还把分母2a漏了2。"
+        },
+        {
+          "id": "m7-d16-r2",
+          "content": "应是Δ=1，x=(5±1)/2，所以x=2或3。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d17",
+      "familyId": "circle_sector_measure",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "multiple_errors",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d17；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:circle_sector_measure",
+        "scenario:multiple_errors"
+      ],
+      "initialContext": {
+        "questionId": "m7-d17-q",
+        "questionText": "半径6厘米、圆心角60°的扇形，求面积和弧长（保留π）。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d17-s1",
+            "text": "扇形占整圆的60/180=1/3"
+          },
+          {
+            "id": "m7-d17-s2",
+            "text": "面积=(1/3)×π×6²=12π平方厘米"
+          },
+          {
+            "id": "m7-d17-s3",
+            "text": "弧长直接用πr，得到6π厘米"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d17-r1",
+          "content": "我把整圆角度错用成180°了，应该除360°。"
+        },
+        {
+          "id": "m7-d17-r2",
+          "content": "弧长也要乘同样比例：2π×6×60/360=2π，面积是6π。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d18",
+      "familyId": "equal_distance_average_speed",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "multiple_errors",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d18；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:equal_distance_average_speed",
+        "scenario:multiple_errors"
+      ],
+      "initialContext": {
+        "questionId": "m7-d18-q",
+        "questionText": "往返两地单程各30千米，去程速度30千米/时，返程60千米/时，平均速度是多少？",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d18-s1",
+            "text": "平均速度=(30+60)/2=45千米/时"
+          },
+          {
+            "id": "m7-d18-s2",
+            "text": "我用时间核对：去程30/30=1小时，返程30/60=2小时"
+          },
+          {
+            "id": "m7-d18-s3",
+            "text": "总路程60千米、总时间3小时，所以又算得20千米/时"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d18-r1",
+          "content": "直接平均两个速度不适用于这里；返程30÷60我又倒过来算了。"
+        },
+        {
+          "id": "m7-d18-r2",
+          "content": "返程0.5小时，总时间1.5小时；60÷1.5=40千米/时。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d19",
+      "familyId": "missing_geometry_diagram",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "insufficient_evidence",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d19；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:missing_geometry_diagram",
+        "scenario:insufficient_evidence"
+      ],
+      "initialContext": {
+        "questionId": "m7-d19-q",
+        "questionText": "题面只抄到：“如图，AB=6，求阴影部分面积。”图和其他条件未提供。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d19-s1",
+            "text": "我只记得图上标了AB=6，阴影好像在右边。"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d19-r1",
+          "content": "原图现在找不到了，我不知道是三角形还是四边形。"
+        },
+        {
+          "id": "m7-d19-r2",
+          "content": "暂时不能补图，也不愿意猜别的边长。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d20",
+      "familyId": "illegible_equation_operator",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "insufficient_evidence",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d20；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:illegible_equation_operator",
+        "scenario:insufficient_evidence"
+      ],
+      "initialContext": {
+        "questionId": "m7-d20-q",
+        "questionText": "解方程 2x ? 3=7，其中?被遮住，可能是+或−。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d20-s1",
+            "text": "我暂按加号抄成2x+3=7，算到x=2。"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d20-r1",
+          "content": "原稿被折住了，看不清是加号还是减号。"
+        },
+        {
+          "id": "m7-d20-r2",
+          "content": "我现在不想重新拍照，先不要认定我移项错了。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d21",
+      "familyId": "answer_only_reasoning_unknown",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "insufficient_evidence",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d21；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:answer_only_reasoning_unknown",
+        "scenario:insufficient_evidence"
+      ],
+      "initialContext": {
+        "questionId": "m7-d21-q",
+        "questionText": "求函数 y=(x−1)² 的最小值，并说明理由。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d21-s1",
+            "text": "最小值是0，过程没写。"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d21-r1",
+          "content": "答案是我看同桌后记下来的，我暂时不想解释。"
+        },
+        {
+          "id": "m7-d21-r2",
+          "content": "没有别的草稿了，请别替我编步骤。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d22",
+      "familyId": "absolute_value_piecewise",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "student_counterevidence",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d22；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:absolute_value_piecewise",
+        "scenario:student_counterevidence"
+      ],
+      "initialContext": {
+        "questionId": "m7-d22-q",
+        "questionText": "当x=−2时，求|x|的值并解释。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d22-s1",
+            "text": "|x|=x，所以x=−2时|x|=−2。"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d22-r1",
+          "content": "那行漏了条件。我知道x<0时应取−x，x=−2时是2。"
+        },
+        {
+          "id": "m7-d22-r2",
+          "content": "我把绝对值当数轴上到0的距离，|−5|=5；刚才那行不代表我认为距离能是负数。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d23",
+      "familyId": "derivative_chain_rule",
+      "subject": "MATH",
+      "gradeBand": "GRADE_10_12",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "student_counterevidence",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d23；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:derivative_chain_rule",
+        "scenario:student_counterevidence"
+      ],
+      "initialContext": {
+        "questionId": "m7-d23-q",
+        "questionText": "对 y=(2x+1)³ 求导。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_10_12",
+        "steps": [
+          {
+            "id": "m7-d23-s1",
+            "text": "y′=3(2x+1)²"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d23-r1",
+          "content": "我写漏内层导数2了，完整是3(2x+1)²×2=6(2x+1)²。"
+        },
+        {
+          "id": "m7-d23-r2",
+          "content": "若换成(5x−1)³，我会写15(5x−1)²；我不是把内层导数恒当1。"
+        }
+      ]
+    },
+    {
+      "id": "m7-d24",
+      "familyId": "inclusive_integer_bound",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "DEBUG",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "student_counterevidence",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-d24；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:inclusive_integer_bound",
+        "scenario:student_counterevidence"
+      ],
+      "initialContext": {
+        "questionId": "m7-d24-q",
+        "questionText": "整数x至少为3且小于7，写出x的范围和所有可能值。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-d24-s1",
+            "text": "范围是3<x<7"
+          },
+          {
+            "id": "m7-d24-s2",
+            "text": "可能值为4、5、6"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-d24-r1",
+          "content": "我草稿想写3≤x<7，录入时≤丢了下面横线，3应该算进去。"
+        },
+        {
+          "id": "m7-d24-r2",
+          "content": "“至少3”包含等于3，因此完整列举是3、4、5、6。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b01",
+      "familyId": "arithmetic_sequence_sum",
+      "subject": "MATH",
+      "gradeBand": "GRADE_10_12",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "correct",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b01；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:arithmetic_sequence_sum",
+        "scenario:correct"
+      ],
+      "initialContext": {
+        "questionId": "m7-b01-q",
+        "questionText": "等差数列首项2，公差3，求前10项和。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_10_12",
+        "steps": [
+          {
+            "id": "m7-b01-s1",
+            "text": "a₁₀=2+(10−1)×3=29"
+          },
+          {
+            "id": "m7-b01-s2",
+            "text": "S₁₀=(2+29)×10÷2=155"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b01-r1",
+          "content": "第10项是在首项上加9次公差，不是10次。"
+        },
+        {
+          "id": "m7-b01-r2",
+          "content": "我也可以用S₁₀=10×2+10×9×3/2，仍得155。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b02",
+      "familyId": "coordinate_distance",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "correct",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b02；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:coordinate_distance",
+        "scenario:correct"
+      ],
+      "initialContext": {
+        "questionId": "m7-b02-q",
+        "questionText": "平面直角坐标系中A(−1,2)、B(3,5)，求AB长。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-b02-s1",
+            "text": "横坐标差为3−(−1)=4，纵坐标差为5−2=3"
+          },
+          {
+            "id": "m7-b02-s2",
+            "text": "AB=√(4²+3²)=5"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b02-r1",
+          "content": "两个差作为直角边，AB是斜边，使用勾股定理。"
+        },
+        {
+          "id": "m7-b02-r2",
+          "content": "反过来取坐标差会都变号，但平方后结果相同。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b03",
+      "familyId": "binomial_square_evaluation",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "calculation_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b03；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:binomial_square_evaluation",
+        "scenario:calculation_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-b03-q",
+        "questionText": "展开并化简 (x−3)²。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-b03-s1",
+            "text": "(x−3)²=x²−2×x×3+3²"
+          },
+          {
+            "id": "m7-b03-s2",
+            "text": "因此为x²−6x+6"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b03-r1",
+          "content": "我记的展开公式没变，是最后3²算成了6。"
+        },
+        {
+          "id": "m7-b03-r2",
+          "content": "3²=9，所以应为x²−6x+9。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b04",
+      "familyId": "triangle_angle_sum",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "calculation_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b04；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:triangle_angle_sum",
+        "scenario:calculation_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-b04-q",
+        "questionText": "三角形的两个内角为47°和68°，求第三个内角。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-b04-s1",
+            "text": "第三个角=180°−47°−68°"
+          },
+          {
+            "id": "m7-b04-s2",
+            "text": "计算得75°"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b04-r1",
+          "content": "47+68=115，我在180减115那里减错了。"
+        },
+        {
+          "id": "m7-b04-r2",
+          "content": "180−115=65，三个角相加是180。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b05",
+      "familyId": "square_unit_conversion",
+      "subject": "MATH",
+      "gradeBand": "GRADE_5_6",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "calculation_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b05；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:square_unit_conversion",
+        "scenario:calculation_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-b05-q",
+        "questionText": "把0.35平方米换算成平方厘米。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_5_6",
+        "steps": [
+          {
+            "id": "m7-b05-s1",
+            "text": "1米=100厘米，所以1平方米=10000平方厘米"
+          },
+          {
+            "id": "m7-b05-s2",
+            "text": "0.35×10000=350平方厘米"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b05-r1",
+          "content": "平方单位的换算率我写成10000了，乘的时候少写了一个0。"
+        },
+        {
+          "id": "m7-b05-r2",
+          "content": "0.35×10000=3500，所以应是3500平方厘米。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b06",
+      "familyId": "similar_figures_area_ratio",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "conceptual_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b06；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:similar_figures_area_ratio",
+        "scenario:conceptual_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-b06-q",
+        "questionText": "两个相似三角形对应边之比为2:3，求面积之比。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-b06-s1",
+            "text": "相似图形的面积比等于对应边比，所以面积比2:3"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b06-r1",
+          "content": "我把长度比直接当成面积比了。"
+        },
+        {
+          "id": "m7-b06-r2",
+          "content": "底和高都按2:3缩放，面积应按4:9缩放。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b07",
+      "familyId": "logarithm_sum_nonrule",
+      "subject": "MATH",
+      "gradeBand": "GRADE_10_12",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "conceptual_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b07；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:logarithm_sum_nonrule",
+        "scenario:conceptual_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-b07-q",
+        "questionText": "计算 log₂(8+8)，并检查能否拆开。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_10_12",
+        "steps": [
+          {
+            "id": "m7-b07-s1",
+            "text": "log₂(8+8)=log₂8+log₂8"
+          },
+          {
+            "id": "m7-b07-s2",
+            "text": "因为log₂8=3，所以原式等于6"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b07-r1",
+          "content": "我把对数的乘法规则用在加法里了。"
+        },
+        {
+          "id": "m7-b07-r2",
+          "content": "8+8=16，log₂16=4，不能拆成两个对数相加。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b08",
+      "familyId": "conditional_die_sample_space",
+      "subject": "MATH",
+      "gradeBand": "GRADE_10_12",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "conceptual_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b08；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:conditional_die_sample_space",
+        "scenario:conceptual_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-b08-q",
+        "questionText": "掷一枚均匀六面骰子，已知点数大于3，求点数为偶数的概率。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_10_12",
+        "steps": [
+          {
+            "id": "m7-b08-s1",
+            "text": "偶数有2、4、6，所有点数有6种"
+          },
+          {
+            "id": "m7-b08-s2",
+            "text": "所以概率是3/6=1/2"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b08-r1",
+          "content": "我没有用“已知大于3”，条件下只能出现4、5、6。"
+        },
+        {
+          "id": "m7-b08-r2",
+          "content": "其中偶数是4和6，因此条件概率应是2/3。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b09",
+      "familyId": "radical_equation_extraneous_root",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "method_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b09；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:radical_equation_extraneous_root",
+        "scenario:method_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-b09-q",
+        "questionText": "在实数范围内解方程 √(x+6)=x。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-b09-s1",
+            "text": "两边平方：x+6=x²，得到(x−3)(x+2)=0"
+          },
+          {
+            "id": "m7-b09-s2",
+            "text": "所以x=3和x=−2都是原方程的解"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b09-r1",
+          "content": "我平方后没检查原来右边必须非负，也没代回去。"
+        },
+        {
+          "id": "m7-b09-r2",
+          "content": "x=−2时左边2、右边−2，不成立；只有x=3。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b10",
+      "familyId": "cubic_closed_interval_extrema",
+      "subject": "MATH",
+      "gradeBand": "GRADE_10_12",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "method_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b10；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:cubic_closed_interval_extrema",
+        "scenario:method_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-b10-q",
+        "questionText": "求 f(x)=x³−3x 在闭区间[−2,0]上的最小值。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_10_12",
+        "steps": [
+          {
+            "id": "m7-b10-s1",
+            "text": "f′(x)=3x²−3，区间内驻点为x=−1"
+          },
+          {
+            "id": "m7-b10-s2",
+            "text": "最小值必在驻点，所以最小值f(−1)=2"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b10-r1",
+          "content": "我只代入了导数为0的位置，没有检查两个端点。"
+        },
+        {
+          "id": "m7-b10-r2",
+          "content": "f(−2)=−2，f(0)=0，f(−1)=2；比较后最小值是−2。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b11",
+      "familyId": "ordered_book_selection",
+      "subject": "MATH",
+      "gradeBand": "GRADE_10_12",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "method_error",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b11；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:ordered_book_selection",
+        "scenario:method_error"
+      ],
+      "initialContext": {
+        "questionId": "m7-b11-q",
+        "questionText": "从4本不同的书中取2本，分别放在书架的左、右两个位置，共有多少种放法？",
+        "subject": "MATH",
+        "gradeBand": "GRADE_10_12",
+        "steps": [
+          {
+            "id": "m7-b11-s1",
+            "text": "只要选2本，不用考虑左右顺序"
+          },
+          {
+            "id": "m7-b11-s2",
+            "text": "C(4,2)=6，所以有6种"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b11-r1",
+          "content": "我把“放在左、右位置”当成了只选出一组。"
+        },
+        {
+          "id": "m7-b11-r2",
+          "content": "先选左边有4种，再选右边有3种，共12种；交换左右是不同放法。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b12",
+      "familyId": "trigonometric_units_identity",
+      "subject": "MATH",
+      "gradeBand": "GRADE_10_12",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "multiple_errors",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b12；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:trigonometric_units_identity",
+        "scenario:multiple_errors"
+      ],
+      "initialContext": {
+        "questionId": "m7-b12-q",
+        "questionText": "求 sin30°、cos30°，并写出 sin²30°+cos²30° 的值。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_10_12",
+        "steps": [
+          {
+            "id": "m7-b12-s1",
+            "text": "30°=π/3弧度"
+          },
+          {
+            "id": "m7-b12-s2",
+            "text": "所以sin30°=sin(π/3)=√3/2，cos30°=1/2"
+          },
+          {
+            "id": "m7-b12-s3",
+            "text": "同一个角的sin²加cos²等于2"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b12-r1",
+          "content": "角度换成弧度时，我把30/180算成1/3；恒等式也记错了。"
+        },
+        {
+          "id": "m7-b12-r2",
+          "content": "应为π/6，sin30°=1/2，cos30°=√3/2，平方和1。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b13",
+      "familyId": "frequency_weighted_mean",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "multiple_errors",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b13；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:frequency_weighted_mean",
+        "scenario:multiple_errors"
+      ],
+      "initialContext": {
+        "questionId": "m7-b13-q",
+        "questionText": "5名学生测验成绩中有2人得70分、3人得90分，求这5人的平均分。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-b13-s1",
+            "text": "平均分=(70+90)/2=80分"
+          },
+          {
+            "id": "m7-b13-s2",
+            "text": "我再按人数检查：总人数2+3=6人"
+          },
+          {
+            "id": "m7-b13-s3",
+            "text": "总分70×2+90×3=410分，因此平均分410/6"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b13-r1",
+          "content": "第一次把两个不同人数的组当一样重；第二次又把人数加错。"
+        },
+        {
+          "id": "m7-b13-r2",
+          "content": "总人数5，总分410，所以平均82分。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b14",
+      "familyId": "parallel_line_slope_intercept",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "multiple_errors",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b14；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:parallel_line_slope_intercept",
+        "scenario:multiple_errors"
+      ],
+      "initialContext": {
+        "questionId": "m7-b14-q",
+        "questionText": "求经过点(1,4)、且与直线y=2x−3平行的直线解析式。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [
+          {
+            "id": "m7-b14-s1",
+            "text": "平行线斜率取负倒数，所以k=−1/2"
+          },
+          {
+            "id": "m7-b14-s2",
+            "text": "代入(1,4)：4=−1/2+b，移项得b=7/2"
+          },
+          {
+            "id": "m7-b14-s3",
+            "text": "直线为y=−x/2+7/2"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b14-r1",
+          "content": "我把平行与垂直的斜率关系混淆了；即便按−1/2算，b也该是9/2。"
+        },
+        {
+          "id": "m7-b14-r2",
+          "content": "平行应取k=2，再用4=2+b得b=2，直线y=2x+2。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b15",
+      "familyId": "ambiguous_fraction_scope",
+      "subject": "MATH",
+      "gradeBand": "GRADE_7_9",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "insufficient_evidence",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b15；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:ambiguous_fraction_scope",
+        "scenario:insufficient_evidence"
+      ],
+      "initialContext": {
+        "questionId": "m7-b15-q",
+        "questionText": "抄写式子为“x+1/x+2=3”；分数线范围不清，可能是(x+1)/(x+2)=3，也可能是(x+1)/x+2=3。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_7_9",
+        "steps": [],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b15-r1",
+          "content": "我没有保存原图，不知道分母是否包括+2。"
+        },
+        {
+          "id": "m7-b15-r2",
+          "content": "我不愿再补抄了，请不要选一种当成原题。"
+        }
+      ]
+    },
+    {
+      "id": "m7-b16",
+      "familyId": "nonzero_vector_parallel_dot_product",
+      "subject": "MATH",
+      "gradeBand": "GRADE_10_12",
+      "split": "BLIND",
+      "reviewStatus": "PROVISIONAL",
+      "scenarioType": "student_counterevidence",
+      "source": {
+        "kind": "AUTHOR_CREATED",
+        "reference": "M7原创教学诊断候选 m7-b16；非真实学生记录，无教师审核",
+        "license": "项目原创合成案例，可随项目提交与复现；未经教师审定"
+      },
+      "tags": [
+        "knowledge:nonzero_vector_parallel_dot_product",
+        "scenario:student_counterevidence"
+      ],
+      "initialContext": {
+        "questionId": "m7-b16-q",
+        "questionText": "已知非零向量a=(1,2)、b=(2,4)，判断它们是否平行、是否垂直，并说明理由。",
+        "subject": "MATH",
+        "gradeBand": "GRADE_10_12",
+        "steps": [
+          {
+            "id": "m7-b16-s1",
+            "text": "a·b=1×2+2×4=10≠0，所以两个向量不平行"
+          }
+        ],
+        "messages": [],
+        "findings": [],
+        "turnCount": 0,
+        "hintLevel": 0
+      },
+      "studentReplies": [
+        {
+          "id": "m7-b16-r1",
+          "content": "我把判垂直的点积条件说成了判平行。b=2a，所以这两个向量平行。"
+        },
+        {
+          "id": "m7-b16-r2",
+          "content": "点积等于0才判垂直；这题点积10说明不垂直。判平行也可看1×4−2×2=0。"
+        }
+      ]
+    }
+  ]
+}

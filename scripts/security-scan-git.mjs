@@ -18,7 +18,7 @@ for (const file of files) {
   if (/(?:^|\/)(?:\.env(?:\..+)?|node_modules|\.local|\.next|generated|QA-evidence)(?:\/|$)/.test(file) && file!=='.env.example'
       || /(?:\.dump|\.sql\.gz|storageState\.json|trace\.zip|latest-results\.json|tsbuildinfo)$/.test(file)) findings.push({file,reason:'RUNTIME_OR_SECRET_FILE'});
   const content = execFileSync('git',['show',`:${file}`],{maxBuffer:32*1024*1024}).toString('utf8');
-  if ([...secrets].some(secret=>content.includes(secret)) || /\bsk-[A-Za-z0-9_-]{24,}\b|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/.test(content)) findings.push({file,reason:'SECRET_PATTERN'});
+  if ([...secrets].some(secret=>content.includes(secret)) || /\bsk-(?:ws-)?[A-Za-z0-9_.-]{24,}\b|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/.test(content)) findings.push({file,reason:'SECRET_PATTERN'});
 }
 console.log(JSON.stringify({stagedFiles:files.length,knownSecretChecks:secrets.size,findings,passed:files.length>0&&findings.length===0},null,2));
 if (!files.length || findings.length) process.exitCode=1;

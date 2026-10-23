@@ -1,0 +1,831 @@
+{
+  "schemaVersion": "1.0",
+  "datasetId": "m7-math-author-created-candidates",
+  "datasetVersion": "2026-10-23.2",
+  "datasetHash": "241f0a5821f7310d5a8073a48af83af31d8fb9b0369a23875a6e59c35a6b707e",
+  "reviewerRole": "AUTHOR_ENGINEERING_SELF_REVIEW",
+  "teacherReviewed": false,
+  "scope": "确定性数值核验及作者逐例工程审读，不证明心理成因或追问有效性；证据不足案例用不同条件的参考解验证非唯一性。",
+  "solutions": [
+    {
+      "caseId": "m7-d01",
+      "correctAnswer": "x=11",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "已提供过程正确；不得为生成诊断而编造错误。可让学生说明分配律或核验，但不能据一次正确答案推断长期掌握。",
+      "checks": [
+        {
+          "expression": "3*(11-2)",
+          "expected": 27,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "2*11+5",
+          "expected": 27,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d02",
+      "correctAnswer": "24平方厘米",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "底高匹配及面积计算均正确。关注学生解释的垂直条件，不应额外发明几何错误。",
+      "checks": [
+        {
+          "expression": "6*8/2",
+          "expected": 24,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "sqrt(6^2+8^2)",
+          "expected": 10,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d03",
+      "correctAnswer": "中位数6；平均数7",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "中位数6、平均数7均正确，重复值的处理合理。",
+      "checks": [
+        {
+          "expression": "(3+6+6+8+12)/5",
+          "expected": 7,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "6",
+          "expected": 6,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d04",
+      "correctAnswer": "[2,5)∪(5,+∞)",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "两个定义域限制取交集正确，端点2可取而5不可取。不能把正确端点解释标成概念错误。",
+      "checks": [
+        {
+          "expression": "2-2",
+          "expected": 0,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "2-5",
+          "expected": -3,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "5-5",
+          "expected": 0,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d05",
+      "correctAnswer": "−14",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "可观测错误在第二步，结果应为−14。学生后续正确解释为反证，不可继续确定地归因为不理解负数加法。",
+      "checks": [
+        {
+          "expression": "-8+3*(-2)",
+          "expected": -14,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "-8-6",
+          "expected": -14,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d06",
+      "correctAnswer": "11/12",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "通分正确，第二步分子加法出错。不得把正确通分当作分母相加误解。",
+      "checks": [
+        {
+          "expression": "2/3+1/4",
+          "expected": 0.9166666666666666,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "8+3",
+          "expected": 11,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d07",
+      "correctAnswer": "68元；降价12元",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "首个独立错误在80×0.15的数值，后面的70是传播结果。当前过程不能证明百分数含义不懂。",
+      "checks": [
+        {
+          "expression": "80*0.15",
+          "expected": 12,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "80*(1-0.15)",
+          "expected": 68,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d08",
+      "correctAnswer": "x=3，y=1",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "消元方法正确，第二步除法错误导致后续结果。真正解为(3,1)，应先定位独立错误。",
+      "checks": [
+        {
+          "expression": "9/3",
+          "expected": 3,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "2*3+1",
+          "expected": 7,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "3-1",
+          "expected": 2,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d09",
+      "correctAnswer": "a⁵",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "原回答明确说指数相乘，可暂提出规则混淆假设；学生展开后的纠正说明本轮更新，不能再把原假设当既定长期事实。",
+      "checks": [
+        {
+          "expression": "2^2*2^3",
+          "expected": 32,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "2^5",
+          "expected": 32,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "2^6",
+          "expected": 64,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d10",
+      "correctAnswer": "x=7或x=−7",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "遗漏负根，且原文断言只有一个解，需区分算术平方根与平方方程的解。",
+      "checks": [
+        {
+          "expression": "7^2",
+          "expected": 49,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "(-7)^2",
+          "expected": 49,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d11",
+      "correctAnswer": "3/10",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "第二步忽略不放回导致样本空间改变；第三步是传播结果。追问应检查条件样本空间，不能只给最终概率。",
+      "checks": [
+        {
+          "expression": "3/5*2/4",
+          "expected": 0.3,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "3/5*3/5",
+          "expected": 0.36,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d12",
+      "correctAnswer": "x<−3",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "原步骤遗漏负数乘除的变号条件。样例代入可区分规则错误与符号书写失误；纠正后不应继续强断言。",
+      "checks": [
+        {
+          "expression": "-2*(-4)",
+          "expected": 8,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "-2*0",
+          "expected": 0,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "6/(-2)",
+          "expected": -3,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d13",
+      "correctAnswer": "无解（唯一代数候选x=3被定义域排除）",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "因式分解正确；方法缺陷是把约分后候选直接当作原式解，忽略x≠3。原式在允许域内无解。",
+      "checks": [
+        {
+          "expression": "3+3",
+          "expected": 6,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "3-3",
+          "expected": 0,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "3^2-9",
+          "expected": 0,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d14",
+      "correctAnswer": "60平方厘米",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "错误在底高配对，高应垂直底边。第二步65的乘除正确，是错误方法的传播。",
+      "checks": [
+        {
+          "expression": "sqrt(13^2-5^2)",
+          "expected": 12,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "10*12/2",
+          "expected": 60,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d15",
+      "correctAnswer": "最小值3，在x=2时取到",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "单点验证不能证明全局最小值，配方才能给出下界。第二步代入本身正确，不应视为算术错误。",
+      "checks": [
+        {
+          "expression": "2^2-4*2+7",
+          "expected": 3,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "0^2-4*0+7",
+          "expected": 7,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d16",
+      "correctAnswer": "x=2或x=3",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "包含两个独立问题：判别式符号与求根公式分母。只改一个仍不能得到正确解；心理原因仍只是待核验假设。",
+      "checks": [
+        {
+          "expression": "(-5)^2-4*1*6",
+          "expected": 1,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "(5+1)/(2*1)",
+          "expected": 3,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "(5-1)/(2*1)",
+          "expected": 2,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "2^2-5*2+6",
+          "expected": 0,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "3^2-5*3+6",
+          "expected": 0,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d17",
+      "correctAnswer": "面积6π平方厘米；弧长2π厘米",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "独立错误是整圆角度比例和弧长公式；面积第二步是错误比例的传播。",
+      "checks": [
+        {
+          "expression": "60/360*6^2",
+          "expected": 6,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "2*6*60/360",
+          "expected": 2,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d18",
+      "correctAnswer": "40千米/时",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "平均速度定义误用与返程时间除法错误相互独立。两个互相矛盾的学生答案都不能被任选其一当真值。",
+      "checks": [
+        {
+          "expression": "30/30",
+          "expected": 1,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "30/60",
+          "expected": 0.5,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "60/(30/30+30/60)",
+          "expected": 40,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d19",
+      "correctAnswer": "信息不足，无法唯一确定面积；例如底6的三角形高2或4时面积分别6或12",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "缺图且缺决定面积的条件，不能补造边长或归因为学生不会面积。优先请补图；学生拒绝后应保留信息不足。",
+      "checks": [
+        {
+          "expression": "6*2/2",
+          "expected": 6,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "6*4/2",
+          "expected": 12,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d20",
+      "correctAnswer": "若为+则x=2；若为−则x=5；原输入不能唯一确定",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "学生在加号解释下运算正确，但原题符号不确定。不能固定成减号题再判错；应索取修正或明确两种条件答案。",
+      "checks": [
+        {
+          "expression": "2*2+3",
+          "expected": 7,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "2*5-3",
+          "expected": 7,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d21",
+      "correctAnswer": "最小值0，在x=1时取到；无法由该回答判断学生推理能力",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "数值答案正确，但缺少学生本人推理证据，且拒答。不得推断其已掌握或有某种确定错因；本题弃答目标是因果诊断，不是放弃数学真值。",
+      "checks": [
+        {
+          "expression": "(1-1)^2",
+          "expected": 0,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "(0-1)^2",
+          "expected": 1,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d22",
+      "correctAnswer": "2；x<0时|x|=−x",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "初始步骤确有错误；后续条件和迁移例构成对“不理解绝对值”的反证。应更正先前归因，保留书写失误作为假设，不能无证据宣布永久掌握。",
+      "checks": [
+        {
+          "expression": "abs(-2)",
+          "expected": 2,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "abs(-5)",
+          "expected": 5,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d23",
+      "correctAnswer": "y′=6(2x+1)²",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "最初漏掉链式因子；学生随后能给出原题和新内层系数的导数，反驳持续链式法则误解的强断言。",
+      "checks": [
+        {
+          "expression": "6*(2*0+1)^2",
+          "expected": 6,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "3*2",
+          "expected": 6,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "3*5",
+          "expected": 15,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-d24",
+      "correctAnswer": "3≤x<7；x为3、4、5、6",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "原始文本遗漏边界3，后续解释可反证不懂“至少”的断言。录入失误为学生自报，不能断言核实了其原稿。第二步由错误边界传播。",
+      "checks": [
+        {
+          "expression": "7-3",
+          "expected": 4,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "3+4+5+6",
+          "expected": 18,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b01",
+      "correctAnswer": "155",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "末项与求和均正确，能给出另一等价公式；不能发明序号差一错误。",
+      "checks": [
+        {
+          "expression": "2+9*3",
+          "expected": 29,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "(2+29)*10/2",
+          "expected": 155,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "10*2+10*9*3/2",
+          "expected": 155,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b02",
+      "correctAnswer": "5",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "坐标差和距离正确。交换两点不会改变距离，不应把符号差异本身标错。",
+      "checks": [
+        {
+          "expression": "sqrt((3-(-1))^2+(5-2)^2)",
+          "expected": 5,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "sqrt(((-1)-3)^2+(2-5)^2)",
+          "expected": 5,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b03",
+      "correctAnswer": "x²−6x+9",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "展开模板已正确写出，错误在常数平方计算。现有证据不支持把它诊断为缺交叉项。",
+      "checks": [
+        {
+          "expression": "3^2",
+          "expected": 9,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "(5-3)^2",
+          "expected": 4,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "5^2-6*5+9",
+          "expected": 4,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b04",
+      "correctAnswer": "65°",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "角和公式正确，减法数值错误。不得将学生已写出的180°规则判成未知。",
+      "checks": [
+        {
+          "expression": "180-47-68",
+          "expected": 65,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "47+68+65",
+          "expected": 180,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b05",
+      "correctAnswer": "3500平方厘米",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "平方换算率正确，数值乘法错误。后续澄清反对“把面积换算率当100”的归因。",
+      "checks": [
+        {
+          "expression": "100^2",
+          "expected": 10000,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "0.35*10000",
+          "expected": 3500,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b06",
+      "correctAnswer": "4:9",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "原回答把一维比例直接用于二维面积；需验证底、高同时缩放的理解。",
+      "checks": [
+        {
+          "expression": "(2/3)^2",
+          "expected": 0.4444444444444444,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "(2*2/2)/(3*3/2)",
+          "expected": 0.4444444444444444,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b07",
+      "correctAnswer": "4",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "首步使用不存在的对数和式分解规则；第二步两个log₂8=3本身正确。",
+      "checks": [
+        {
+          "expression": "ln(8+8)/ln(2)",
+          "expected": 4,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "ln(8)/ln(2)+ln(8)/ln(2)",
+          "expected": 6,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b08",
+      "correctAnswer": "2/3",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "条件样本空间应限制到{4,5,6}。原文可能是漏读或条件概率概念混淆，类别只作可接受范围，不预断心理原因。",
+      "checks": [
+        {
+          "expression": "2/3",
+          "expected": 0.6666666666666666,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "3/6",
+          "expected": 0.5,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b09",
+      "correctAnswer": "只有x=3",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "平方得到必要条件正确，未经检验保留增根是方法错误。须以原方程与x≥0核对。",
+      "checks": [
+        {
+          "expression": "sqrt(3+6)",
+          "expected": 3,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "sqrt(-2+6)",
+          "expected": 2,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "(-2)^2-(-2)-6",
+          "expected": 0,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b10",
+      "correctAnswer": "最小值−2，在x=−2时取到",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "求导和区间内驻点正确，闭区间最值策略遗漏端点。x=−1还是局部极大点，不能把驻点等同最小点。",
+      "checks": [
+        {
+          "expression": "(-2)^3-3*(-2)",
+          "expected": -2,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "(-1)^3-3*(-1)",
+          "expected": 2,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "0^3-3*0",
+          "expected": 0,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b11",
+      "correctAnswer": "12种",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "任务有次序，组合方法漏计左右交换。需区分漏读位置要求与排列组合适用条件，不能确定唯一心理原因。",
+      "checks": [
+        {
+          "expression": "4*3",
+          "expected": 12,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "4*3/2",
+          "expected": 6,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b12",
+      "correctAnswer": "sin30°=1/2；cos30°=√3/2；平方和1",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "两个独立错误是角度换算和平方和恒等式。第二步的π/3三角值正确但用于错误角度，是传播结果。",
+      "checks": [
+        {
+          "expression": "30/180",
+          "expected": 0.16666666666666666,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "sin(pi/6)",
+          "expected": 0.5,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "cos(pi/6)",
+          "expected": 0.8660254037844386,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "sin(pi/6)^2+cos(pi/6)^2",
+          "expected": 1,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b13",
+      "correctAnswer": "82分",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "简单平均组均分与人数加法错误相互独立。正确总分410不能抵消两个错误；不应只抓最后除数而漏掉第一种方法。",
+      "checks": [
+        {
+          "expression": "70*2+90*3",
+          "expected": 410,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "2+3",
+          "expected": 5,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "(70*2+90*3)/(2+3)",
+          "expected": 82,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b14",
+      "correctAnswer": "y=2x+2",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "斜率关系混淆与代入后的移项计算错误独立。最终正确直线须同时经过给定点且斜率等于2。",
+      "checks": [
+        {
+          "expression": "4-2*1",
+          "expected": 2,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "2*1+2",
+          "expected": 4,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "4+1/2",
+          "expected": 4.5,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b15",
+      "correctAnswer": "第一种x=−5/2；第二种无解；不能唯一确定原题解",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "分式范围决定题目，不能自行补括号。第一种交叉相乘得x+1=3x+6，x=−5/2且分母非零；第二种在x≠0下化为x+1=x，即1=0，故无解。需请求输入纠正，拒绝补充后保留待确认。",
+      "checks": [
+        {
+          "expression": "((-2.5)+1)/((-2.5)+2)",
+          "expected": 3,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "-2.5+2",
+          "expected": -0.5,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "1",
+          "expected": 1,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "0",
+          "expected": 0,
+          "tolerance": 1e-9
+        }
+      ]
+    },
+    {
+      "caseId": "m7-b16",
+      "correctAnswer": "平行且不垂直；b=2a，a·b=10",
+      "engineeringReviewStatus": "AUTHOR_ENGINEERING_CHECKED_PROVISIONAL",
+      "engineeringReviewNotes": "初始点积计算正确，但把非零点积用于否定平行的结论错误。学生随后给出倍数关系、平行行列式及正确垂直条件，反驳持续概念混淆的强断言；误说为学生自述，只能作为当前证据。",
+      "checks": [
+        {
+          "expression": "1*4-2*2",
+          "expected": 0,
+          "tolerance": 1e-9
+        },
+        {
+          "expression": "1*2+2*4",
+          "expected": 10,
+          "tolerance": 1e-9
+        }
+      ]
+    }
+  ]
+}

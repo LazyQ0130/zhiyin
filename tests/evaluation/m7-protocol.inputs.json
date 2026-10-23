@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "datasetId": "m7-single-protocol-only",
+  "version": "1.0.0",
+  "provenance": "ENGINEERING_SYNTHETIC",
+  "description": "仅一条原创无隐私协议检查，非教师金标、非会话质量评测。不得替代后续批量授权。",
+  "cases": [{
+    "id": "m7-protocol-sign",
+    "tags": ["PROTOCOL_ONLY", "PROVISIONAL", "MATH"],
+    "source": {"kind": "SYNTHETIC", "reference": "M7-author-created-protocol", "license": "Project original evaluation material"},
+    "context": {
+      "questionId": "m7-protocol-question",
+      "questionText": "解方程 x² − 5x + 6 = 0，并说明判别式的计算过程。",
+      "subject": "MATH",
+      "gradeBand": "HIGH_SCHOOL",
+      "steps": [
+        {"id": "m7-protocol-step-1", "text": "a=1，b=-5，c=6"},
+        {"id": "m7-protocol-step-2", "text": "Δ=(-5)²+4×1×6=49"},
+        {"id": "m7-protocol-step-3", "text": "x=(5±7)/2，所以x=6或-1"}
+      ],
+      "messages": [], "findings": [], "turnCount": 0, "hintLevel": 0
+    }
+  }]
+}

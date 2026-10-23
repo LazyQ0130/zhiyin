@@ -45,7 +45,7 @@ try {
     scanned++;
     const contents = await readFile(file, "utf8");
     const exactSecret = [...secrets].some((secret) => contents.includes(secret));
-    const keyPattern = /\bsk-[a-zA-Z0-9_-]{24,}\b/.test(contents);
+    const keyPattern = /\bsk-(?:ws-)?[a-zA-Z0-9_.-]{24,}\b/.test(contents);
     const privateKey = /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/.test(contents);
     if (exactSecret || keyPattern || privateKey) leaks.push(path.relative(root, file));
   }

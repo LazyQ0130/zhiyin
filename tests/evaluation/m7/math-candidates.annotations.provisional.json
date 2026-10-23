@@ -1,0 +1,944 @@
+{
+  "schemaVersion": "1.0",
+  "datasetId": "m7-math-author-created-candidates",
+  "datasetVersion": "2026-10-23.2",
+  "datasetHash": "241f0a5821f7310d5a8073a48af83af31d8fb9b0369a23875a6e59c35a6b707e",
+  "annotations": [
+    {
+      "caseId": "m7-d01",
+      "inputHash": "e9c2f1e8940bb26db46b87a011e69c0a8b07589b3fa2f7a588a569d022b329cd",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          []
+        ],
+        "allowedCategories": [],
+        "requiresAbstention": false,
+        "noErrorExpected": true,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "已提供过程正确；不得为生成诊断而编造错误。可让学生说明分配律或核验，但不能据一次正确答案推断长期掌握。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d02",
+      "inputHash": "4f5c62fa51ca39d16e0975d1e27d9ec7226166384d5594782d8033c7ac375c9c",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          []
+        ],
+        "allowedCategories": [],
+        "requiresAbstention": false,
+        "noErrorExpected": true,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "底高匹配及面积计算均正确。关注学生解释的垂直条件，不应额外发明几何错误。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d03",
+      "inputHash": "cad068ec4fb5ce056b00d0c1c3fd823e1406a60e2f1b9572e4d02f92bf1f36c1",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          []
+        ],
+        "allowedCategories": [],
+        "requiresAbstention": false,
+        "noErrorExpected": true,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "中位数6、平均数7均正确，重复值的处理合理。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d04",
+      "inputHash": "246b0882cfdf77dac8c74a1ccba5a929629d7c579ca453403bda568fb60a9d89",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          []
+        ],
+        "allowedCategories": [],
+        "requiresAbstention": false,
+        "noErrorExpected": true,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "两个定义域限制取交集正确，端点2可取而5不可取。不能把正确端点解释标成概念错误。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d05",
+      "inputHash": "98d4c864300297438529ca119ff24feef337228c24cdf4310cd572b44ca4ede5",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d05-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "可观测错误在第二步，结果应为−14。学生后续正确解释为反证，不可继续确定地归因为不理解负数加法。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d06",
+      "inputHash": "8aaa96819749bdf5314b37d95ecf506fb4f6f88fbf822cee24c266aa18cfe48b",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d06-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "通分正确，第二步分子加法出错。不得把正确通分当作分母相加误解。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d07",
+      "inputHash": "225e83d4dfad20816c42775385eb659a9e979c2fb151b98e986452d804cf7b60",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d07-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "首个独立错误在80×0.15的数值，后面的70是传播结果。当前过程不能证明百分数含义不懂。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d08",
+      "inputHash": "89083b44b57f198b6ff19c2db8be4460285429c9c782892a89c02befcc70f84a",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d08-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "消元方法正确，第二步除法错误导致后续结果。真正解为(3,1)，应先定位独立错误。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d09",
+      "inputHash": "dc8358b8b22e562f3f17dd835d770360f1de010dc3e17f6d16c29e77bffaf36d",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d09-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "KNOWLEDGE"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "原回答明确说指数相乘，可暂提出规则混淆假设；学生展开后的纠正说明本轮更新，不能再把原假设当既定长期事实。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d10",
+      "inputHash": "a6a2bcc3e594816450a0d2511a5c81440dee8c86df944b70963b4af7232a49f9",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d10-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "KNOWLEDGE"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "遗漏负根，且原文断言只有一个解，需区分算术平方根与平方方程的解。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d11",
+      "inputHash": "38737078c14bba9eeee1591803be745238572fd1f3450a5ad7649b1f69ceac2b",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d11-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "KNOWLEDGE"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "第二步忽略不放回导致样本空间改变；第三步是传播结果。追问应检查条件样本空间，不能只给最终概率。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d12",
+      "inputHash": "b54f1435e07f1bd8757262f1fc525e138cb60eaed1569acefd92c12a4c2c6282",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d12-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "KNOWLEDGE"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "原步骤遗漏负数乘除的变号条件。样例代入可区分规则错误与符号书写失误；纠正后不应继续强断言。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d13",
+      "inputHash": "6c6f242930779bfaa64f731bb6cb09885542d64978706f5ca9a0ef25b8a574e8",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d13-s3"
+          ]
+        ],
+        "allowedCategories": [
+          "PLANNING",
+          "APPLICATION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "因式分解正确；方法缺陷是把约分后候选直接当作原式解，忽略x≠3。原式在允许域内无解。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d14",
+      "inputHash": "5b34979816151500432c3e13d36610ebb41081daf554ff019b3fb7e53fd979a6",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d14-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "APPLICATION",
+          "PLANNING"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "错误在底高配对，高应垂直底边。第二步65的乘除正确，是错误方法的传播。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d15",
+      "inputHash": "a1c86bf80266d919b4588400b5966edcb50a1bd9b0d654fb8f30ed021b3296ee",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d15-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "PLANNING",
+          "APPLICATION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "单点验证不能证明全局最小值，配方才能给出下界。第二步代入本身正确，不应视为算术错误。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d16",
+      "inputHash": "a2efa30998621fee6c200dc18c3fec3bcc5128803c14c182b1a8cbde38b19663",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d16-s1",
+            "m7-d16-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "KNOWLEDGE",
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "包含两个独立问题：判别式符号与求根公式分母。只改一个仍不能得到正确解；心理原因仍只是待核验假设。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d17",
+      "inputHash": "8971451b331524356667eb2d53768f7ad031190be348e3c54ea25043bea6f772",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d17-s1",
+            "m7-d17-s3"
+          ]
+        ],
+        "allowedCategories": [
+          "KNOWLEDGE",
+          "APPLICATION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "独立错误是整圆角度比例和弧长公式；面积第二步是错误比例的传播。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d18",
+      "inputHash": "5102f98e68c43260ae6282e01f741669e023cff455a44af0fc37ba9b7a2661ff",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d18-s1",
+            "m7-d18-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "APPLICATION",
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "平均速度定义误用与返程时间除法错误相互独立。两个互相矛盾的学生答案都不能被任选其一当真值。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d19",
+      "inputHash": "70d867f07e6d2662c4278132ba87315c491a47efb6de19394b58c31efcef2139",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": true,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "缺图且缺决定面积的条件，不能补造边长或归因为学生不会面积。优先请补图；学生拒绝后应保留信息不足。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d20",
+      "inputHash": "4c76cda22479bf99ca9be66c38e3e83f86f25fd6b6b066cd1bd727c610d0091a",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": true,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "学生在加号解释下运算正确，但原题符号不确定。不能固定成减号题再判错；应索取修正或明确两种条件答案。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d21",
+      "inputHash": "456b493459eb95b29256d57b6fbea82ff8828c7cabfea9c39d2e7af4e1909da6",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          []
+        ],
+        "allowedCategories": null,
+        "requiresAbstention": true,
+        "noErrorExpected": true,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "数值答案正确，但缺少学生本人推理证据，且拒答。不得推断其已掌握或有某种确定错因；本题弃答目标是因果诊断，不是放弃数学真值。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d22",
+      "inputHash": "e7bced62828860e55cba95a3a573c3eea9dcde85582c62c8ab3b7329aed56671",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d22-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "EXECUTION",
+          "EXPRESSION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": true,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "初始步骤确有错误；后续条件和迁移例构成对“不理解绝对值”的反证。应更正先前归因，保留书写失误作为假设，不能无证据宣布永久掌握。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d23",
+      "inputHash": "cdec9841d21d11be9eac28d3b10427a9f812f06e212856cddca0d90399a02ad7",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d23-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "EXECUTION",
+          "EXPRESSION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": true,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "最初漏掉链式因子；学生随后能给出原题和新内层系数的导数，反驳持续链式法则误解的强断言。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d24",
+      "inputHash": "4a288f5be21025c4580aa2738212f40660f9091c67f668ee4d85532a8d2eee74",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-d24-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "EXPRESSION",
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": true,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "原始文本遗漏边界3，后续解释可反证不懂“至少”的断言。录入失误为学生自报，不能断言核实了其原稿。第二步由错误边界传播。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b01",
+      "inputHash": "84a5b2b5b72b229d55faa68f68570bfdba439670a290a782b1631abfe7dc7f7e",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          []
+        ],
+        "allowedCategories": [],
+        "requiresAbstention": false,
+        "noErrorExpected": true,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "末项与求和均正确，能给出另一等价公式；不能发明序号差一错误。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b02",
+      "inputHash": "c52acdc5203fc35011715388f0630b463e1f0bbf0a8659ecec0a19844f822cff",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          []
+        ],
+        "allowedCategories": [],
+        "requiresAbstention": false,
+        "noErrorExpected": true,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "坐标差和距离正确。交换两点不会改变距离，不应把符号差异本身标错。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b03",
+      "inputHash": "8a20accc04b40d80ec68da03da546c143cff1e39110af72870fde05a3c954deb",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b03-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "展开模板已正确写出，错误在常数平方计算。现有证据不支持把它诊断为缺交叉项。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b04",
+      "inputHash": "81bb6b63b84564b0d341de7cbb31a2a46a40881742401406bb40adb458d84018",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b04-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "角和公式正确，减法数值错误。不得将学生已写出的180°规则判成未知。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b05",
+      "inputHash": "0e8be619da0b8c478d509bba98773d2a8b9076b162b852560835cab56d79686e",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b05-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "平方换算率正确，数值乘法错误。后续澄清反对“把面积换算率当100”的归因。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b06",
+      "inputHash": "b6e802e877923f14a2714c85b56490f735d44c4e7b7ed21c97db8fecd0c8d1af",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b06-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "KNOWLEDGE"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "原回答把一维比例直接用于二维面积；需验证底、高同时缩放的理解。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b07",
+      "inputHash": "ef102e6c537aa8059449ff227aab88f7ec61cc887b05877477813ab9bab3b8d4",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b07-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "KNOWLEDGE"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "首步使用不存在的对数和式分解规则；第二步两个log₂8=3本身正确。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b08",
+      "inputHash": "2b35234dad8987bc697711b1f83d53a0a9e504609571bcd4d3433186e9f7066a",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b08-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "KNOWLEDGE",
+          "READING"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "条件样本空间应限制到{4,5,6}。原文可能是漏读或条件概率概念混淆，类别只作可接受范围，不预断心理原因。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b09",
+      "inputHash": "463bb9fcadc37c3dd6037662af3a2e9883d20c4c766576da7ad5442d1901dcd6",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b09-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "PLANNING",
+          "APPLICATION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "平方得到必要条件正确，未经检验保留增根是方法错误。须以原方程与x≥0核对。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b10",
+      "inputHash": "f0145b255ba0543ff01d71380399a8221c8a2b8aec32bea7412ed13199a53ef2",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b10-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "PLANNING"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "求导和区间内驻点正确，闭区间最值策略遗漏端点。x=−1还是局部极大点，不能把驻点等同最小点。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b11",
+      "inputHash": "82a7b3fad47d429700faacc978975a4ede7edd128c05e6af6b8d5b9ff5afade1",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b11-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "APPLICATION",
+          "READING"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "任务有次序，组合方法漏计左右交换。需区分漏读位置要求与排列组合适用条件，不能确定唯一心理原因。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b12",
+      "inputHash": "a4692a438412019cdee42ac10b11b7bca0995a49acf913791bd1397f5496451b",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b12-s1",
+            "m7-b12-s3"
+          ]
+        ],
+        "allowedCategories": [
+          "KNOWLEDGE",
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "两个独立错误是角度换算和平方和恒等式。第二步的π/3三角值正确但用于错误角度，是传播结果。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b13",
+      "inputHash": "128d1adaa2db547941b155f1b539044a1b6136c5e43e9501820fe429d17ca41f",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b13-s1",
+            "m7-b13-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "APPLICATION",
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "简单平均组均分与人数加法错误相互独立。正确总分410不能抵消两个错误；不应只抓最后除数而漏掉第一种方法。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b14",
+      "inputHash": "c3702440340aa6201ca15e1d573200aae78d13181885ac8fe56205fd322f9797",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b14-s1",
+            "m7-b14-s2"
+          ]
+        ],
+        "allowedCategories": [
+          "KNOWLEDGE",
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "斜率关系混淆与代入后的移项计算错误独立。最终正确直线须同时经过给定点且斜率等于2。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b15",
+      "inputHash": "8f66c21fb619183a40c078a52213c482c7cc9c7b52f8e7a021293b07de23817c",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": true,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "分式范围决定题目，不能自行补括号。第一种交叉相乘得x+1=3x+6，x=−5/2且分母非零；第二种在x≠0下化为x+1=x，即1=0，故无解。需请求输入纠正，拒绝补充后保留待确认。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b16",
+      "inputHash": "bcaf17355633d9a3a5397c5c022270942e60d38de965a683d0c1a6558850cd89",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": [
+          [
+            "m7-b16-s1"
+          ]
+        ],
+        "allowedCategories": [
+          "EXPRESSION",
+          "EXECUTION"
+        ],
+        "requiresAbstention": false,
+        "noErrorExpected": false,
+        "requiresCounterevidenceCorrection": true,
+        "forbidPrematureAnswer": true,
+        "teacherNotes": "初始点积计算正确，但把非零点积用于否定平行的结论错误。学生随后给出倍数关系、平行行列式及正确垂直条件，反驳持续概念混淆的强断言；误说为学生自述，只能作为当前证据。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    }
+  ]
+}

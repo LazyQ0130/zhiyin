@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "datasetId": "m7-math-author-created-candidates",
+  "datasetVersion": "2026-10-23.2",
+  "datasetHash": "241f0a5821f7310d5a8073a48af83af31d8fb9b0369a23875a6e59c35a6b707e",
+  "split": "BLIND",
+  "caseIds": [
+    "m7-b01",
+    "m7-b02",
+    "m7-b03",
+    "m7-b04",
+    "m7-b05",
+    "m7-b06",
+    "m7-b07",
+    "m7-b08",
+    "m7-b09",
+    "m7-b10",
+    "m7-b11",
+    "m7-b12",
+    "m7-b13",
+    "m7-b14",
+    "m7-b15",
+    "m7-b16"
+  ],
+  "familyIds": [
+    "arithmetic_sequence_sum",
+    "coordinate_distance",
+    "binomial_square_evaluation",
+    "triangle_angle_sum",
+    "square_unit_conversion",
+    "similar_figures_area_ratio",
+    "logarithm_sum_nonrule",
+    "conditional_die_sample_space",
+    "radical_equation_extraneous_root",
+    "cubic_closed_interval_extrema",
+    "ordered_book_selection",
+    "trigonometric_units_identity",
+    "frequency_weighted_mean",
+    "parallel_line_slope_intercept",
+    "ambiguous_fraction_scope",
+    "nonzero_vector_parallel_dot_product"
+  ]
+}

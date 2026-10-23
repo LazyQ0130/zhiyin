@@ -18,6 +18,8 @@ npm run local
 
 ## 开发与验收命令
 
+M7 增加40条未审数学候选（调试24/盲测候选16）、会话级评分与教师模板。`npm run eval:m7-data` 校验数据与hash；`npm run eval:conversation -- simulate` 仅演练调试集Mock。已按用户一次授权完成1次真实协议检查，出现需教师审阅的归因和追问风险，不能据此宣称教育质量通过。Key仅本地配置，网页仍为Mock。见 [M7交付报告](docs/reports/M7-delivery.md)、[案例集说明](docs/M7-案例集说明.md)、[会话评测规范](docs/M7-会话评测规范.md)、[单次真实检查](docs/M7-单次真实协议检查.md)。
+
 M6 已增加教师标注/离线评分与受控真实测试基础：`npm run eval:validate`、`npm run eval:demo`、`npm run eval:plan`、`npm run test:faults`。真实调用必须另有明确人工授权与配置；默认不调用付费模型。见 [教师评测规范](docs/M6-评测与教师标注规范.md)、[受控调用说明](docs/M6-真实模型受控测试.md)、[M6交付报告](docs/reports/M6-delivery.md) 和 [发布阻塞清单](docs/reports/M6-release-blockers.md)。
 
 ```powershell

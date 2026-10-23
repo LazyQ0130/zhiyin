@@ -6,6 +6,7 @@ import path from 'node:path';
 import {randomUUID} from 'node:crypto';
 import {evaluationDatasetSchema,evaluationRunSchema,hashValue,type EvaluationRun} from '../../src/evaluation/schemas';
 import {authorizeLive,consumeLivePermit,estimateCostCny,guardLiveRequest,reservedCostCny,QWEN_MAX_INPUT_TOKENS} from '../../src/evaluation/live-control';
+import {authorizeSingleProtocol} from '../../src/evaluation/single-protocol';
 
 if(!process.argv.includes('--controlled-worker')) {
   const result=spawnSync(process.execPath,['--conditions=react-server','--import','tsx',fileURLToPath(import.meta.url),...process.argv.slice(2),'--controlled-worker'],{stdio:'inherit'});
@@ -23,14 +24,15 @@ try {
   const caseIds=option('--case')?.split(',')??[dataset.cases[0].id];
   if(caseIds.some(id=>!dataset.cases.some(c=>c.id===id))||new Set(caseIds).size!==caseIds.length)throw new Error('INVALID_CASE_SELECTION');
   if(!args.includes('--execute')) {
-    save('plan.json',{status:'NOT_RUN',mode:'PLAN_ONLY',datasetId:dataset.datasetId,datasetHash,caseIds,networkRequests:0,actualCostCny:0,teacherQuality:'NOT_EVALUATED',reason:'No execute authorization supplied. Plan does not invoke any model.'});
+    save('plan.json',{status:'NOT_RUN',mode:'PLAN_ONLY',datasetId:dataset.datasetId,datasetHash,caseIds,singleProtocol:args.includes('--single-protocol'),maximumRequests:args.includes('--single-protocol')?1:null,networkRequests:0,actualCostCny:0,teacherQuality:'NOT_EVALUATED',reason:'No execute authorization supplied. Plan does not invoke any model.'});
     console.log(JSON.stringify({status:'NOT_RUN',networkRequests:0,actualCostCny:0,outputDirectory:out,datasetHash,caseIds}));
   } else {
     const permitPath=option('--permit');
     if(!permitPath)throw new Error('EXPLICIT_PERMISSION_FILE_REQUIRED');
     const relative=path.relative(realpathSync('.local'),realpathSync(permitPath));
     if(relative.startsWith('..')||path.isAbsolute(relative))throw new Error('PERMISSION_MUST_BE_IN_LOCAL_IGNORED_DIRECTORY');
-    const permit=authorizeLive(JSON.parse(readFileSync(permitPath,'utf8')),datasetHash,caseIds);
+    const permitValue=JSON.parse(readFileSync(permitPath,'utf8'));
+    const permit=args.includes('--single-protocol')?authorizeSingleProtocol(permitValue,dataset.datasetId,datasetHash,caseIds):authorizeLive(permitValue,datasetHash,caseIds);
     if(process.env.AI_MODE!=='live'||!process.env.ALIYUN_API_KEY?.trim())throw new Error('LIVE_MODE_AND_EXPLICIT_ALIYUN_KEY_REQUIRED');
     // wx enforces one-use across processes; consume before any network call, even if interrupted.
     consumeLivePermit(permit,runId,path.resolve('.local/eval-authorizations'));
@@ -42,10 +44,14 @@ try {
       return fetch(url,init);
     }});
     const run:EvaluationRun={schemaVersion:'1.0',runId,createdAt:new Date().toISOString(),datasetId:dataset.datasetId,datasetVersion:dataset.version,datasetHash,caseIds,mode:'LIVE_API',provider:'aliyun',model:permit.model,promptVersion:DIAGNOSIS_PROMPT_VERSION,records:[]};
+    const responseEvidence:Array<{caseId:string;responses:unknown}>=[];
     for(const id of caseIds){
       const item=dataset.cases.find(c=>c.id===id)!;let output:unknown;let errorCode:string|undefined;
       try{output=await gateway.createDiagnosisTurn(item.context);}catch(error){errorCode=error instanceof GatewayError?error.code:'UNEXPECTED_CLIENT_ERROR';}
       const m=gateway.lastInvocation;const cost=estimateCostCny(m?.inputTokens??null,m?.outputTokens??null,permit);
+      responseEvidence.push({caseId:id,responses:gateway.lastResponseEvidence});
+      // Local-only, bounded and credential-redacted provider evidence; never print response bodies.
+      writeFileSync(path.join(out,'response-evidence.json'),JSON.stringify(responseEvidence,null,2));
       if((m?.inputTokens??0)>QWEN_MAX_INPUT_TOKENS||(m?.outputTokens??0)>permit.maxCompletionTokens+10)errorCode='USAGE_EXCEEDS_RESERVED_LIMIT';
       run.records.push({caseId:id,inputHash:hashValue(item.context),status:errorCode?'ERROR':'SUCCESS',...(errorCode?{errorCode}:{output}),invocation:{latencyMs:m?.latencyMs??null,inputTokens:m?.inputTokens??null,outputTokens:m?.outputTokens??null,attempts:m?.attempts??0,estimatedCostCny:cost,costBasis:cost===null?null:`${permit.pricing.source}; verified=${permit.pricing.verifiedAt}; region=${permit.pricing.region}; input=${permit.pricing.inputPerMillion},output=${permit.pricing.outputPerMillion} CNY/million; no discount`}});
       // Persist after every request. A failed request halts the batch; selected missing cases score as failures.

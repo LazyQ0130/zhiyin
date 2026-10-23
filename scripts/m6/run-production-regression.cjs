@@ -7,6 +7,8 @@ const {Client}=require('pg');const {randomBytes}=require('crypto');const {spawn,
  const name='m6_regression_'+Date.now();const admin=new Client({connectionString:original.href});await admin.connect();await admin.query('CREATE DATABASE "'+name+'"');await admin.end();
  const dburl=new URL(original);dburl.pathname='/'+name;const port=await new Promise(r=>{const s=net.createServer();s.listen(0,'127.0.0.1',()=>{const n=s.address().port;s.close(()=>r(n))})});
  const invite=randomBytes(20).toString('hex');const env={...process.env,DATABASE_URL:dburl.href,AI_MODE:'mock',ALLOW_MOCK_IN_PRODUCTION:'true',ENABLE_SIGNUP:'true',INVITE_CODE:invite,E2E_INVITE_CODE:invite,SESSION_SECRET:randomBytes(40).toString('hex'),APP_URL:'http://127.0.0.1:'+port,E2E_BASE_URL:'http://127.0.0.1:'+port,PLAYWRIGHT_SKIP_BROWSER_GC:'1',PLAYWRIGHT_BROWSERS_PATH:path.resolve('.local/playwright'),NODE_ENV:'production',NEXT_DIST_DIR:JSON.parse(fs.readFileSync('.local/latest-build.json','utf8')).directory};
+ // A regression server must never inherit a real provider credential, even in Mock mode.
+ env.ALIYUN_API_KEY='UNIT_TEST_PLACEHOLDER_NOT_A_CREDENTIAL';env.DASHSCOPE_API_KEY='UNIT_TEST_PLACEHOLDER_NOT_A_CREDENTIAL';
  const migrate=spawnSync(process.execPath,['node_modules/prisma/build/index.js','migrate','deploy'],{env,encoding:'utf8'});fs.writeFileSync(path.join(dir,'migrate.log'),migrate.stdout+migrate.stderr);if(migrate.status!==0)throw new Error('Migration failed');
  const log=fs.createWriteStream(path.join(dir,'server.log'));const server=spawn(process.execPath,['node_modules/next/dist/bin/next','start','--hostname','127.0.0.1','--port',String(port)],{env,stdio:['ignore','pipe','pipe']});server.stdout.pipe(log);server.stderr.pipe(log);
  try{

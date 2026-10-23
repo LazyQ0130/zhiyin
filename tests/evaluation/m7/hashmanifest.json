@@ -1,0 +1,276 @@
+{
+  "schemaVersion": "1.0",
+  "datasetId": "m7-math-author-created-candidates",
+  "datasetVersion": "2026-10-23.2",
+  "datasetHash": "241f0a5821f7310d5a8073a48af83af31d8fb9b0369a23875a6e59c35a6b707e",
+  "provenance": "AUTHOR_CREATED_PROVISIONAL",
+  "teacherReviewedCount": 0,
+  "canonicalHashAlgorithm": "SHA-256 of recursively sorted-key canonical JSON; arrays retain order (hashValue)",
+  "fileHashAlgorithm": "SHA-256 of exact UTF-8 file bytes",
+  "fileHashes": {
+    "math-candidates.inputs.json": "ab0b0913d6bfee640f7833a50f803f47ce2ab48ba61b1bfceb4ecc9877f3bb6e",
+    "math-candidates.annotations.provisional.json": "bddb62417ab737159f7aded011468746c27c4025dbc11f5439f30d250aaf437c",
+    "math-checks.provisional.json": "b254826c9ab3849c66422f51d62d5521e287f83906782c661c0d7d91634da166",
+    "teacher-reviewer-a.template.json": "aad328df9583c45f67936d4afbb4d005ebb5897425cd27229a2073de7cb279e9",
+    "teacher-reviewer-b.template.json": "aad328df9583c45f67936d4afbb4d005ebb5897425cd27229a2073de7cb279e9",
+    "debug.case-ids.json": "f5abc80bc97a3eea3a7527c07efd01670d16f080b6ad24a79066bf4d31bea0b3",
+    "blind.case-ids.json": "2aa5f77b471af11f48a8da5ac92605cbf10c3c09499ef8fc2d8d3b6c110cfc45"
+  },
+  "splitCounts": {
+    "DEBUG": 24,
+    "BLIND": 16
+  },
+  "scenarioCounts": {
+    "correct": 6,
+    "calculation_error": 7,
+    "conceptual_error": 7,
+    "method_error": 6,
+    "multiple_errors": 6,
+    "insufficient_evidence": 4,
+    "student_counterevidence": 4
+  },
+  "familyCount": 40,
+  "familyIsolationScope": "Declared family IDs and exact/normalized input checks; semantic near-duplicate separation additionally reviewed by the author, not a universal automated leakage guarantee.",
+  "caseBindings": [
+    {
+      "caseId": "m7-d01",
+      "familyId": "linear_equation_expansion",
+      "split": "DEBUG",
+      "inputHash": "e9c2f1e8940bb26db46b87a011e69c0a8b07589b3fa2f7a588a569d022b329cd"
+    },
+    {
+      "caseId": "m7-d02",
+      "familyId": "right_triangle_area",
+      "split": "DEBUG",
+      "inputHash": "4f5c62fa51ca39d16e0975d1e27d9ec7226166384d5594782d8033c7ac375c9c"
+    },
+    {
+      "caseId": "m7-d03",
+      "familyId": "univariate_median",
+      "split": "DEBUG",
+      "inputHash": "cad068ec4fb5ce056b00d0c1c3fd823e1406a60e2f1b9572e4d02f92bf1f36c1"
+    },
+    {
+      "caseId": "m7-d04",
+      "familyId": "radical_rational_domain",
+      "split": "DEBUG",
+      "inputHash": "246b0882cfdf77dac8c74a1ccba5a929629d7c579ca453403bda568fb60a9d89"
+    },
+    {
+      "caseId": "m7-d05",
+      "familyId": "signed_integer_arithmetic",
+      "split": "DEBUG",
+      "inputHash": "98d4c864300297438529ca119ff24feef337228c24cdf4310cd572b44ca4ede5"
+    },
+    {
+      "caseId": "m7-d06",
+      "familyId": "fraction_common_denominator",
+      "split": "DEBUG",
+      "inputHash": "8aaa96819749bdf5314b37d95ecf506fb4f6f88fbf822cee24c266aa18cfe48b"
+    },
+    {
+      "caseId": "m7-d07",
+      "familyId": "percentage_discount",
+      "split": "DEBUG",
+      "inputHash": "225e83d4dfad20816c42775385eb659a9e979c2fb151b98e986452d804cf7b60"
+    },
+    {
+      "caseId": "m7-d08",
+      "familyId": "linear_system_elimination",
+      "split": "DEBUG",
+      "inputHash": "89083b44b57f198b6ff19c2db8be4460285429c9c782892a89c02befcc70f84a"
+    },
+    {
+      "caseId": "m7-d09",
+      "familyId": "same_base_exponent_product",
+      "split": "DEBUG",
+      "inputHash": "dc8358b8b22e562f3f17dd835d770360f1de010dc3e17f6d16c29e77bffaf36d"
+    },
+    {
+      "caseId": "m7-d10",
+      "familyId": "square_equation_dual_roots",
+      "split": "DEBUG",
+      "inputHash": "a6a2bcc3e594816450a0d2511a5c81440dee8c86df944b70963b4af7232a49f9"
+    },
+    {
+      "caseId": "m7-d11",
+      "familyId": "probability_without_replacement",
+      "split": "DEBUG",
+      "inputHash": "38737078c14bba9eeee1591803be745238572fd1f3450a5ad7649b1f69ceac2b"
+    },
+    {
+      "caseId": "m7-d12",
+      "familyId": "negative_inequality_direction",
+      "split": "DEBUG",
+      "inputHash": "b54f1435e07f1bd8757262f1fc525e138cb60eaed1569acefd92c12a4c2c6282"
+    },
+    {
+      "caseId": "m7-d13",
+      "familyId": "rational_equation_excluded_value",
+      "split": "DEBUG",
+      "inputHash": "6c6f242930779bfaa64f731bb6cb09885542d64978706f5ca9a0ef25b8a574e8"
+    },
+    {
+      "caseId": "m7-d14",
+      "familyId": "isosceles_triangle_altitude",
+      "split": "DEBUG",
+      "inputHash": "5b34979816151500432c3e13d36610ebb41081daf554ff019b3fb7e53fd979a6"
+    },
+    {
+      "caseId": "m7-d15",
+      "familyId": "quadratic_vertex_minimum",
+      "split": "DEBUG",
+      "inputHash": "a1c86bf80266d919b4588400b5966edcb50a1bd9b0d654fb8f30ed021b3296ee"
+    },
+    {
+      "caseId": "m7-d16",
+      "familyId": "quadratic_discriminant_formula",
+      "split": "DEBUG",
+      "inputHash": "a2efa30998621fee6c200dc18c3fec3bcc5128803c14c182b1a8cbde38b19663"
+    },
+    {
+      "caseId": "m7-d17",
+      "familyId": "circle_sector_measure",
+      "split": "DEBUG",
+      "inputHash": "8971451b331524356667eb2d53768f7ad031190be348e3c54ea25043bea6f772"
+    },
+    {
+      "caseId": "m7-d18",
+      "familyId": "equal_distance_average_speed",
+      "split": "DEBUG",
+      "inputHash": "5102f98e68c43260ae6282e01f741669e023cff455a44af0fc37ba9b7a2661ff"
+    },
+    {
+      "caseId": "m7-d19",
+      "familyId": "missing_geometry_diagram",
+      "split": "DEBUG",
+      "inputHash": "70d867f07e6d2662c4278132ba87315c491a47efb6de19394b58c31efcef2139"
+    },
+    {
+      "caseId": "m7-d20",
+      "familyId": "illegible_equation_operator",
+      "split": "DEBUG",
+      "inputHash": "4c76cda22479bf99ca9be66c38e3e83f86f25fd6b6b066cd1bd727c610d0091a"
+    },
+    {
+      "caseId": "m7-d21",
+      "familyId": "answer_only_reasoning_unknown",
+      "split": "DEBUG",
+      "inputHash": "456b493459eb95b29256d57b6fbea82ff8828c7cabfea9c39d2e7af4e1909da6"
+    },
+    {
+      "caseId": "m7-d22",
+      "familyId": "absolute_value_piecewise",
+      "split": "DEBUG",
+      "inputHash": "e7bced62828860e55cba95a3a573c3eea9dcde85582c62c8ab3b7329aed56671"
+    },
+    {
+      "caseId": "m7-d23",
+      "familyId": "derivative_chain_rule",
+      "split": "DEBUG",
+      "inputHash": "cdec9841d21d11be9eac28d3b10427a9f812f06e212856cddca0d90399a02ad7"
+    },
+    {
+      "caseId": "m7-d24",
+      "familyId": "inclusive_integer_bound",
+      "split": "DEBUG",
+      "inputHash": "4a288f5be21025c4580aa2738212f40660f9091c67f668ee4d85532a8d2eee74"
+    },
+    {
+      "caseId": "m7-b01",
+      "familyId": "arithmetic_sequence_sum",
+      "split": "BLIND",
+      "inputHash": "84a5b2b5b72b229d55faa68f68570bfdba439670a290a782b1631abfe7dc7f7e"
+    },
+    {
+      "caseId": "m7-b02",
+      "familyId": "coordinate_distance",
+      "split": "BLIND",
+      "inputHash": "c52acdc5203fc35011715388f0630b463e1f0bbf0a8659ecec0a19844f822cff"
+    },
+    {
+      "caseId": "m7-b03",
+      "familyId": "binomial_square_evaluation",
+      "split": "BLIND",
+      "inputHash": "8a20accc04b40d80ec68da03da546c143cff1e39110af72870fde05a3c954deb"
+    },
+    {
+      "caseId": "m7-b04",
+      "familyId": "triangle_angle_sum",
+      "split": "BLIND",
+      "inputHash": "81bb6b63b84564b0d341de7cbb31a2a46a40881742401406bb40adb458d84018"
+    },
+    {
+      "caseId": "m7-b05",
+      "familyId": "square_unit_conversion",
+      "split": "BLIND",
+      "inputHash": "0e8be619da0b8c478d509bba98773d2a8b9076b162b852560835cab56d79686e"
+    },
+    {
+      "caseId": "m7-b06",
+      "familyId": "similar_figures_area_ratio",
+      "split": "BLIND",
+      "inputHash": "b6e802e877923f14a2714c85b56490f735d44c4e7b7ed21c97db8fecd0c8d1af"
+    },
+    {
+      "caseId": "m7-b07",
+      "familyId": "logarithm_sum_nonrule",
+      "split": "BLIND",
+      "inputHash": "ef102e6c537aa8059449ff227aab88f7ec61cc887b05877477813ab9bab3b8d4"
+    },
+    {
+      "caseId": "m7-b08",
+      "familyId": "conditional_die_sample_space",
+      "split": "BLIND",
+      "inputHash": "2b35234dad8987bc697711b1f83d53a0a9e504609571bcd4d3433186e9f7066a"
+    },
+    {
+      "caseId": "m7-b09",
+      "familyId": "radical_equation_extraneous_root",
+      "split": "BLIND",
+      "inputHash": "463bb9fcadc37c3dd6037662af3a2e9883d20c4c766576da7ad5442d1901dcd6"
+    },
+    {
+      "caseId": "m7-b10",
+      "familyId": "cubic_closed_interval_extrema",
+      "split": "BLIND",
+      "inputHash": "f0145b255ba0543ff01d71380399a8221c8a2b8aec32bea7412ed13199a53ef2"
+    },
+    {
+      "caseId": "m7-b11",
+      "familyId": "ordered_book_selection",
+      "split": "BLIND",
+      "inputHash": "82a7b3fad47d429700faacc978975a4ede7edd128c05e6af6b8d5b9ff5afade1"
+    },
+    {
+      "caseId": "m7-b12",
+      "familyId": "trigonometric_units_identity",
+      "split": "BLIND",
+      "inputHash": "a4692a438412019cdee42ac10b11b7bca0995a49acf913791bd1397f5496451b"
+    },
+    {
+      "caseId": "m7-b13",
+      "familyId": "frequency_weighted_mean",
+      "split": "BLIND",
+      "inputHash": "128d1adaa2db547941b155f1b539044a1b6136c5e43e9501820fe429d17ca41f"
+    },
+    {
+      "caseId": "m7-b14",
+      "familyId": "parallel_line_slope_intercept",
+      "split": "BLIND",
+      "inputHash": "c3702440340aa6201ca15e1d573200aae78d13181885ac8fe56205fd322f9797"
+    },
+    {
+      "caseId": "m7-b15",
+      "familyId": "ambiguous_fraction_scope",
+      "split": "BLIND",
+      "inputHash": "8f66c21fb619183a40c078a52213c482c7cc9c7b52f8e7a021293b07de23817c"
+    },
+    {
+      "caseId": "m7-b16",
+      "familyId": "nonzero_vector_parallel_dot_product",
+      "split": "BLIND",
+      "inputHash": "bcaf17355633d9a3a5397c5c022270942e60d38de965a683d0c1a6558850cd89"
+    }
+  ]
+}

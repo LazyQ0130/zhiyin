@@ -1,0 +1,728 @@
+{
+  "schemaVersion": "1.0",
+  "datasetId": "m7-math-author-created-candidates",
+  "datasetVersion": "2026-10-23.2",
+  "datasetHash": "241f0a5821f7310d5a8073a48af83af31d8fb9b0369a23875a6e59c35a6b707e",
+  "annotations": [
+    {
+      "caseId": "m7-d01",
+      "inputHash": "e9c2f1e8940bb26db46b87a011e69c0a8b07589b3fa2f7a588a569d022b329cd",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d02",
+      "inputHash": "4f5c62fa51ca39d16e0975d1e27d9ec7226166384d5594782d8033c7ac375c9c",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d03",
+      "inputHash": "cad068ec4fb5ce056b00d0c1c3fd823e1406a60e2f1b9572e4d02f92bf1f36c1",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d04",
+      "inputHash": "246b0882cfdf77dac8c74a1ccba5a929629d7c579ca453403bda568fb60a9d89",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d05",
+      "inputHash": "98d4c864300297438529ca119ff24feef337228c24cdf4310cd572b44ca4ede5",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d06",
+      "inputHash": "8aaa96819749bdf5314b37d95ecf506fb4f6f88fbf822cee24c266aa18cfe48b",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d07",
+      "inputHash": "225e83d4dfad20816c42775385eb659a9e979c2fb151b98e986452d804cf7b60",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d08",
+      "inputHash": "89083b44b57f198b6ff19c2db8be4460285429c9c782892a89c02befcc70f84a",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d09",
+      "inputHash": "dc8358b8b22e562f3f17dd835d770360f1de010dc3e17f6d16c29e77bffaf36d",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d10",
+      "inputHash": "a6a2bcc3e594816450a0d2511a5c81440dee8c86df944b70963b4af7232a49f9",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d11",
+      "inputHash": "38737078c14bba9eeee1591803be745238572fd1f3450a5ad7649b1f69ceac2b",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d12",
+      "inputHash": "b54f1435e07f1bd8757262f1fc525e138cb60eaed1569acefd92c12a4c2c6282",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d13",
+      "inputHash": "6c6f242930779bfaa64f731bb6cb09885542d64978706f5ca9a0ef25b8a574e8",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d14",
+      "inputHash": "5b34979816151500432c3e13d36610ebb41081daf554ff019b3fb7e53fd979a6",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d15",
+      "inputHash": "a1c86bf80266d919b4588400b5966edcb50a1bd9b0d654fb8f30ed021b3296ee",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d16",
+      "inputHash": "a2efa30998621fee6c200dc18c3fec3bcc5128803c14c182b1a8cbde38b19663",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d17",
+      "inputHash": "8971451b331524356667eb2d53768f7ad031190be348e3c54ea25043bea6f772",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d18",
+      "inputHash": "5102f98e68c43260ae6282e01f741669e023cff455a44af0fc37ba9b7a2661ff",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d19",
+      "inputHash": "70d867f07e6d2662c4278132ba87315c491a47efb6de19394b58c31efcef2139",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d20",
+      "inputHash": "4c76cda22479bf99ca9be66c38e3e83f86f25fd6b6b066cd1bd727c610d0091a",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d21",
+      "inputHash": "456b493459eb95b29256d57b6fbea82ff8828c7cabfea9c39d2e7af4e1909da6",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d22",
+      "inputHash": "e7bced62828860e55cba95a3a573c3eea9dcde85582c62c8ab3b7329aed56671",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d23",
+      "inputHash": "cdec9841d21d11be9eac28d3b10427a9f812f06e212856cddca0d90399a02ad7",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-d24",
+      "inputHash": "4a288f5be21025c4580aa2738212f40660f9091c67f668ee4d85532a8d2eee74",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b01",
+      "inputHash": "84a5b2b5b72b229d55faa68f68570bfdba439670a290a782b1631abfe7dc7f7e",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b02",
+      "inputHash": "c52acdc5203fc35011715388f0630b463e1f0bbf0a8659ecec0a19844f822cff",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b03",
+      "inputHash": "8a20accc04b40d80ec68da03da546c143cff1e39110af72870fde05a3c954deb",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b04",
+      "inputHash": "81bb6b63b84564b0d341de7cbb31a2a46a40881742401406bb40adb458d84018",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b05",
+      "inputHash": "0e8be619da0b8c478d509bba98773d2a8b9076b162b852560835cab56d79686e",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b06",
+      "inputHash": "b6e802e877923f14a2714c85b56490f735d44c4e7b7ed21c97db8fecd0c8d1af",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b07",
+      "inputHash": "ef102e6c537aa8059449ff227aab88f7ec61cc887b05877477813ab9bab3b8d4",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b08",
+      "inputHash": "2b35234dad8987bc697711b1f83d53a0a9e504609571bcd4d3433186e9f7066a",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b09",
+      "inputHash": "463bb9fcadc37c3dd6037662af3a2e9883d20c4c766576da7ad5442d1901dcd6",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b10",
+      "inputHash": "f0145b255ba0543ff01d71380399a8221c8a2b8aec32bea7412ed13199a53ef2",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b11",
+      "inputHash": "82a7b3fad47d429700faacc978975a4ede7edd128c05e6af6b8d5b9ff5afade1",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b12",
+      "inputHash": "a4692a438412019cdee42ac10b11b7bca0995a49acf913791bd1397f5496451b",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b13",
+      "inputHash": "128d1adaa2db547941b155f1b539044a1b6136c5e43e9501820fe429d17ca41f",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b14",
+      "inputHash": "c3702440340aa6201ca15e1d573200aae78d13181885ac8fe56205fd322f9797",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b15",
+      "inputHash": "8f66c21fb619183a40c078a52213c482c7cc9c7b52f8e7a021293b07de23817c",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    },
+    {
+      "caseId": "m7-b16",
+      "inputHash": "bcaf17355633d9a3a5397c5c022270942e60d38de965a683d0c1a6558850cd89",
+      "provenance": "AUTHOR_PROVISIONAL",
+      "expected": {
+        "trueWrongStepIdSets": null,
+        "allowedCategories": null,
+        "requiresAbstention": null,
+        "noErrorExpected": null,
+        "requiresCounterevidenceCorrection": null,
+        "forbidPrematureAnswer": null,
+        "teacherNotes": "待独立教师填写；当前没有教师标签，不得照抄工程预期。"
+      },
+      "review": {
+        "status": "DRAFT",
+        "independentReviews": []
+      }
+    }
+  ]
+}
