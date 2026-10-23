@@ -1,0 +1,316 @@
+generator client {
+  provider = "prisma-client"
+  output = "../src/generated/prisma"
+}
+datasource db {
+  provider = "postgresql"
+}
+model User {
+  id String @id @default(cuid())
+  email String @unique
+  passwordHash String
+  status String @default("ACTIVE")
+  deletedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  profile UserProfile?
+  sessions Session[]
+  problems Problem[]
+  attempts Attempt[]
+  diagnoses DiagnosisSession[]
+  uploads Upload[]
+  practices PracticeSet[]
+  submissions PracticeSubmission[]
+  feedback UserFeedback[]
+  invocations ModelInvocation[]
+  mutations MutationKey[]
+  deletionRequests DeletionRequest[]
+}
+model UserProfile {
+  id String @id @default(cuid())
+  userId String @unique
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  displayName String @default("学习者")
+  gradeBand String @default("HIGH_SCHOOL")
+  preferredSubjects String[] @default(["MATH"])
+  theme String @default("system")
+  reducedMotion Boolean @default(false)
+  onboarded Boolean @default(false)
+  guidanceLevel String @default("QUESTION_FIRST")
+  ageBand String
+  consentStatus String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Session {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  tokenHash String @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+  @@index([userId,expiresAt])
+}
+model Upload {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  mimeType String
+  bytes Bytes
+  size Int
+  deletedAt DateTime?
+  createdAt DateTime @default(now())
+  @@index([userId,createdAt])
+}
+model Problem {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  subject String
+  gradeBand String
+  questionText String
+  imageIds String[]
+  currentRevisionId String?
+  sourceType String @default("TEXT")
+  deletedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  revisions ProblemRevision[]
+  attempts Attempt[]
+  @@index([userId,createdAt])
+}
+model ProblemRevision {
+  id String @id @default(cuid())
+  problemId String
+  problem Problem @relation(fields:[problemId],references:[id],onDelete:Cascade)
+  questionText String
+  imageIds String[]
+  confirmedAt DateTime
+  revisionNumber Int
+  attempts Attempt[]
+  createdAt DateTime @default(now())
+  @@unique([problemId,revisionNumber])
+}
+model Attempt {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  problemId String
+  problem Problem @relation(fields:[problemId],references:[id],onDelete:Cascade)
+  problemRevisionId String
+  revision ProblemRevision @relation(fields:[problemRevisionId],references:[id])
+  rawProcess String
+  stuckReasons String[]
+  attemptStatus String
+  steps AttemptStep[]
+  diagnoses DiagnosisSession[]
+  createdAt DateTime @default(now())
+  @@index([userId,createdAt])
+}
+model AttemptStep {
+  id String @id @default(cuid())
+  attemptId String
+  attempt Attempt @relation(fields:[attemptId],references:[id],onDelete:Cascade)
+  order Int
+  text String
+  source String @default("STUDENT")
+  @@unique([attemptId,order])
+}
+model DiagnosisSession {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  attemptId String @unique
+  attempt Attempt @relation(fields:[attemptId],references:[id],onDelete:Cascade)
+  status String @default("INPUT_CONFIRMED")
+  turnCount Int @default(0)
+  hintLevel Int @default(0)
+  promptVersion String @default("diagnosis-v1")
+  modelRoute String
+  isDemo Boolean @default(true)
+  reportVersion Int @default(0)
+  finishedAt DateTime?
+  deletedAt DateTime?
+  lockUntil DateTime?
+  lockToken String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  messages DiagnosisMessage[]
+  findings DiagnosisFinding[]
+  practices PracticeSet[]
+  invocations ModelInvocation[]
+  feedback UserFeedback[]
+  @@index([userId,createdAt(sort:Desc)])
+}
+model DiagnosisMessage {
+  id String @id @default(cuid())
+  sessionId String
+  session DiagnosisSession @relation(fields:[sessionId],references:[id],onDelete:Cascade)
+  role String
+  content String
+  kind String
+  sequence Int
+  referencedStepIds String[]
+  operationKey String?
+  createdAt DateTime @default(now())
+  @@unique([sessionId,sequence])
+  @@unique([sessionId,operationKey,role])
+}
+model DiagnosisFinding {
+  id String @id @default(cuid())
+  sessionId String
+  session DiagnosisSession @relation(fields:[sessionId],references:[id],onDelete:Cascade)
+  findingKey String
+  category String
+  statement String
+  status String
+  primary Boolean @default(false)
+  verificationNeeded Boolean
+  evidence FindingEvidence[]
+  practiceLinks PracticeFinding[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([sessionId,findingKey])
+  @@index([sessionId,status])
+}
+model FindingEvidence {
+  id String @id @default(cuid())
+  findingId String
+  finding DiagnosisFinding @relation(fields:[findingId],references:[id],onDelete:Cascade)
+  sourceType String
+  sourceId String
+  excerpt String?
+  polarity String
+  @@unique([findingId,sourceType,sourceId,polarity])
+}
+model PracticeSet {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  sessionId String
+  session DiagnosisSession @relation(fields:[sessionId],references:[id],onDelete:Cascade)
+  status String @default("NOT_STARTED")
+  title String
+  source String @default("ENGINEERING_SEED")
+  validatedAt DateTime?
+  isDemo Boolean
+  deletedAt DateTime?
+  retestOfId String? @unique
+  retestOf PracticeSet? @relation("RetestChain",fields:[retestOfId],references:[id])
+  nextRetest PracticeSet? @relation("RetestChain")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  items PracticeItem[]
+  findings PracticeFinding[]
+  review ReviewTask?
+  @@index([userId,status])
+}
+model PracticeFinding {
+  setId String
+  set PracticeSet @relation(fields:[setId],references:[id],onDelete:Cascade)
+  findingId String
+  finding DiagnosisFinding @relation(fields:[findingId],references:[id],onDelete:Cascade)
+  @@id([setId,findingId])
+}
+model PracticeItem {
+  id String @id @default(cuid())
+  setId String
+  set PracticeSet @relation(fields:[setId],references:[id],onDelete:Cascade)
+  order Int
+  seedId String
+  tier String
+  questionText String
+  answerSpec Json
+  hint String
+  hintUsed Boolean @default(false)
+  answerVisibility String @default("HIDDEN")
+  verifierType String @default("DETERMINISTIC")
+  submission PracticeSubmission?
+  @@unique([setId,order])
+}
+model PracticeSubmission {
+  id String @id @default(cuid())
+  itemId String @unique
+  item PracticeItem @relation(fields:[itemId],references:[id],onDelete:Cascade)
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  answerText String
+  assistance String
+  correctness String
+  evaluationMethod String
+  masteryState String
+  feedback String
+  createdAt DateTime @default(now())
+}
+model ReviewTask {
+  id String @id @default(cuid())
+  setId String @unique
+  set PracticeSet @relation(fields:[setId],references:[id],onDelete:Cascade)
+  userId String
+  dueAt DateTime?
+  status String @default("PENDING")
+  completedAt DateTime?
+  @@index([userId,dueAt])
+}
+model UserFeedback {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  sessionId String
+  session DiagnosisSession @relation(fields:[sessionId],references:[id],onDelete:Cascade)
+  type String
+  note String?
+  createdAt DateTime @default(now())
+}
+model ModelInvocation {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  sessionId String?
+  session DiagnosisSession? @relation(fields:[sessionId],references:[id],onDelete:Cascade)
+  provider String
+  model String
+  promptVersion String
+  inputTokens Int?
+  outputTokens Int?
+  costEstimate Decimal?
+  latencyMs Int
+  status String
+  errorClass String?
+  createdAt DateTime @default(now())
+  @@index([userId,createdAt])
+}
+model MutationKey {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  scope String
+  key String
+  inputHash String
+  resourceId String?
+  status String @default("PENDING")
+  createdAt DateTime @default(now())
+  @@unique([userId,scope,key])
+}
+model RateLimitBucket {
+  key String @id
+  count Int
+  resetAt DateTime
+}
+model AuditEvent {
+  id String @id @default(cuid())
+  actorId String?
+  action String
+  subjectType String
+  subjectId String?
+  requestId String
+  createdAt DateTime @default(now())
+}
+model DeletionRequest {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  status String @default("REQUESTED")
+  createdAt DateTime @default(now())
+}

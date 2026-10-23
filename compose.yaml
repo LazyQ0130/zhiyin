@@ -1,0 +1,38 @@
+services:
+  web:
+    profiles: ["app"]
+    build: .
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      APP_URL: ${APP_URL:-http://127.0.0.1:3000}
+      DATABASE_URL: postgresql://zhiyin:${POSTGRES_PASSWORD:-localonly}@db:5432/zhiyin
+      SESSION_SECRET: ${SESSION_SECRET:?Run npm run setup or configure a strong session secret}
+      AI_MODE: ${AI_MODE:-mock}
+      ALLOW_MOCK_IN_PRODUCTION: ${ALLOW_MOCK_IN_PRODUCTION:-false}
+      ALIYUN_API_KEY: ${ALIYUN_API_KEY:-}
+      ALIYUN_BASE_URL: ${ALIYUN_BASE_URL:-https://dashscope.aliyuncs.com/compatible-mode/v1}
+      AI_DEFAULT_MODEL: ${AI_DEFAULT_MODEL:-qwen3.8-flash}
+      ENABLE_SIGNUP: ${ENABLE_SIGNUP:-false}
+      ENABLE_MINOR_SIGNUP: "false"
+      INVITE_CODE: ${INVITE_CODE:-}
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:17-alpine@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb
+    environment:
+      POSTGRES_USER: zhiyin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-localonly}
+      POSTGRES_DB: zhiyin
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - zhiyin_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zhiyin -d zhiyin"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+volumes:
+  zhiyin_pg:

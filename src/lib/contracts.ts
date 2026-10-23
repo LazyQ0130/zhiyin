@@ -1,0 +1,14 @@
+export type GradeBand='PRIMARY'|'MIDDLE_SCHOOL'|'HIGH_SCHOOL'|'UNIVERSITY'|'OTHER';
+export type Subject='MATH'|'CHINESE'|'ENGLISH'|'PHYSICS'|'CHEMISTRY'|'OTHER';
+export type Theme='light'|'dark'|'system';
+export type MeDTO={user:{id:string;email:string};profile:{displayName:string;gradeBand:GradeBand;preferredSubjects:Subject[];theme:Theme;reducedMotion:boolean;onboarded:boolean};aiMode:'mock'|'live'};
+export type EvidenceDTO={kind:string;sourceId:string;excerpt?:string};
+export type FindingDTO={id:string;findingKey:string;category:string;statement:string;status:string;supportingEvidence:EvidenceDTO[];contradictingEvidence:EvidenceDTO[];verificationNeeded:boolean};
+export type SessionSummary={id:string;status:string;createdAt:string;subject:Subject;gradeBand:GradeBand;questionText:string;title:string;findingStatus:string|null;practiceSetId:string|null;isDemo:boolean};
+export type SessionDTO=SessionSummary & {steps:{id:string;text:string;order:number}[];messages:{id:string;role:string;content:string;referencedStepIds:string[]}[];findings:FindingDTO[];imageIds:string[];turnCount:number;hintLevel:number;reportVersion:number;practiceSets:PracticeSummary[]};
+export type DashboardDTO={stats:{diagnoses:number;pendingPractice:number;completedPractice:number};recent:SessionSummary[];focus:SessionSummary|null};
+export type SubmissionDTO={id:string;answerText:string;correctness:string;assistance:string;evaluationMethod:string;masteryState:string;feedback:string};
+export type PracticeSummary={id:string;sessionId:string;status:string;title:string;createdAt:string;completedCount:number;itemCount:number;isDemo:boolean;retestOfId?:string|null;reviewDueAt?:string|null};
+export type PracticeDTO=PracticeSummary & {items:{id:string;questionText:string;tier:string;hintUsed:boolean;hint?:string;submission?:SubmissionDTO}[]};
+export type ProblemDTO={id:string;questionText:string;subject:Subject;gradeBand:GradeBand;imageIds:string[];confirmedRevisionId:string|null};
+export type ListDTO<T>={items:T[];nextCursor:string|null};

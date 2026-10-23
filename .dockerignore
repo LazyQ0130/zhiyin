@@ -1,0 +1,11 @@
+node_modules
+.next
+.local
+.git
+.env
+.env.*
+docs/reports/QA-evidence
+references
+test-results
+playwright-report
+*.log

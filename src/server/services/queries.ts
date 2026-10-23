@@ -1,0 +1,24 @@
+import 'server-only';
+import {db} from '@/lib/db';
+import type {Prisma} from '@/generated/prisma/client';
+import type {SessionDTO,SessionSummary,PracticeDTO,PracticeSummary,SubmissionDTO,GradeBand,Subject} from '@/lib/contracts';
+import {AppError} from '@/server/security/http';
+export const sessionInclude={attempt:{include:{revision:true,problem:true,steps:{orderBy:{order:'asc' as const}}}},messages:{orderBy:{sequence:'asc' as const}},findings:{include:{evidence:true}},practices:{where:{deletedAt:null},include:{review:true,items:{include:{submission:true}}}}} satisfies Prisma.DiagnosisSessionInclude;
+type SessionRow=Prisma.DiagnosisSessionGetPayload<{include:typeof sessionInclude}>;
+export const practiceInclude={review:true,items:{orderBy:{order:'asc' as const},include:{submission:true}}} satisfies Prisma.PracticeSetInclude;
+type PracticeRow=Prisma.PracticeSetGetPayload<{include:typeof practiceInclude}>;
+export function practiceSummary(p:PracticeRow):PracticeSummary{return {id:p.id,sessionId:p.sessionId,status:p.status,title:p.title,createdAt:p.createdAt.toISOString(),completedCount:p.items.filter(i=>i.submission).length,itemCount:p.items.length,isDemo:p.isDemo,retestOfId:p.retestOfId,reviewDueAt:p.review?.dueAt?.toISOString()??null};}
+export function submissionDTO(s:Prisma.PracticeSubmissionGetPayload<object>):SubmissionDTO{return {id:s.id,answerText:s.answerText,correctness:s.correctness,assistance:s.assistance,evaluationMethod:s.evaluationMethod,masteryState:s.masteryState,feedback:s.feedback};}
+export function practiceDTO(p:PracticeRow):PracticeDTO{return {...practiceSummary(p),items:p.items.map(i=>({id:i.id,questionText:i.questionText,tier:i.tier,hintUsed:i.hintUsed,...(i.hintUsed?{hint:i.hint}:{}),...(i.submission?{submission:submissionDTO(i.submission)}:{})}))};}
+export function summary(s:SessionRow):SessionSummary{return {id:s.id,status:s.status,createdAt:s.createdAt.toISOString(),subject:s.attempt.problem.subject as Subject,gradeBand:s.attempt.problem.gradeBand as GradeBand,questionText:s.attempt.revision.questionText,title:s.findings.find(f=>f.primary)?.statement??s.attempt.revision.questionText,findingStatus:s.findings.find(f=>f.primary)?.status??null,practiceSetId:s.practices[0]?.id??null,isDemo:s.isDemo};}
+export function sessionDTO(s:SessionRow):SessionDTO{return {...summary(s),imageIds:s.attempt.revision.imageIds,steps:s.attempt.steps.map(p=>({id:p.id,text:p.text,order:p.order})),messages:s.messages.map(m=>({id:m.id,role:m.role,content:m.content,referencedStepIds:m.referencedStepIds})),findings:s.findings.map(f=>({id:f.id,findingKey:f.findingKey,category:f.category,statement:f.statement,status:f.status,verificationNeeded:f.verificationNeeded,supportingEvidence:f.evidence.filter(e=>e.polarity==='SUPPORTING').map(e=>({kind:e.sourceType,sourceId:e.sourceId,...(e.excerpt?{excerpt:e.excerpt}:{})})),contradictingEvidence:f.evidence.filter(e=>e.polarity==='CONTRADICTING').map(e=>({kind:e.sourceType,sourceId:e.sourceId,...(e.excerpt?{excerpt:e.excerpt}:{})}))})),turnCount:s.turnCount,hintLevel:s.hintLevel,reportVersion:s.reportVersion,practiceSets:s.practices.map(practiceSummary)};}
+export async function getSession(userId:string,id:string){const s=await db.diagnosisSession.findFirst({where:{id,userId,deletedAt:null},include:sessionInclude});if(!s)throw new AppError('NOT_FOUND','没有找到这条学习记录。',404);return s;}
+export async function getPractice(userId:string,id:string){const p=await db.practiceSet.findFirst({where:{id,userId,deletedAt:null,session:{deletedAt:null}},include:practiceInclude});if(!p)throw new AppError('NOT_FOUND','没有找到这组训练。',404);return p;}
+export async function listSessions(userId:string,params:URLSearchParams){
+  const status=params.get('status');const subject=params.get('subject');const cursor=params.get('cursor');const date=params.get('from');
+  const parseDay=(value:string|null)=>{if(!value)return undefined;if(!/^\d{4}-\d{2}-\d{2}$/.test(value))throw new AppError('INVALID_INPUT','日期格式不正确。');const d=new Date(value+'T00:00:00+08:00');if(Number.isNaN(d.getTime()))throw new AppError('INVALID_INPUT','日期格式不正确。');return d;};
+  const from=parseDay(date);const to=parseDay(params.get('to'));if(to)to.setUTCDate(to.getUTCDate()+1);
+  if(cursor&&!await db.diagnosisSession.findFirst({where:{id:cursor,userId,deletedAt:null},select:{id:true}}))throw new AppError('NOT_FOUND','分页位置无效。',404);
+  const items=await db.diagnosisSession.findMany({where:{userId,deletedAt:null,...(status?{status}:{}),...(subject?{attempt:{problem:{subject}}}:{}),...((from||to)?{createdAt:{...(from?{gte:from}:{}),...(to?{lt:to}:{})}}:{})},include:sessionInclude,orderBy:[{createdAt:'desc'},{id:'desc'}],take:51,...(cursor?{cursor:{id:cursor},skip:1}:{})});
+  return {items:items.slice(0,50).map(summary),nextCursor:items.length>50?items[49].id:null};
+}

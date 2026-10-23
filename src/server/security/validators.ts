@@ -1,0 +1,10 @@
+import {z} from 'zod';
+export const grade=z.enum(['PRIMARY','MIDDLE_SCHOOL','HIGH_SCHOOL','UNIVERSITY','OTHER']);
+export const subject=z.enum(['MATH','CHINESE','ENGLISH','PHYSICS','CHEMISTRY','OTHER']);
+export const profileSchema=z.object({displayName:z.string().trim().min(1).max(30).optional(),gradeBand:grade.optional(),preferredSubjects:z.array(subject).max(6).optional(),theme:z.enum(['light','dark','system']).optional(),reducedMotion:z.boolean().optional(),onboarded:z.boolean().optional()}).strict();
+export const registerSchema=z.object({email:z.email().max(254).transform(v=>v.toLowerCase()),password:z.string().min(12,'密码至少 12 位。').max(128),inviteCode:z.string().max(100),ageBand:z.enum(['ADULT','AGE_14_17','UNDER_14']),acceptTerms:z.literal(true,{error:'请先阅读并同意隐私政策和使用协议。'}),displayName:z.string().trim().min(1).max(30).optional()}).strict();
+export const loginSchema=z.object({email:z.email().max(254).transform(v=>v.toLowerCase()),password:z.string().min(1).max(128)}).strict();
+export const problemSchema=z.object({questionText:z.string().max(10000).default(''),gradeBand:grade,subject,imageIds:z.array(z.string().max(64)).max(3).default([])}).strict().refine(v=>v.questionText.trim()||v.imageIds.length,{message:'请填写题目或上传图片。'});
+export const confirmSchema=z.object({questionText:z.string().trim().min(1,'请确认完整题目。').max(10000)}).strict();
+export const attemptSchema=z.object({problemId:z.string(),revisionId:z.string(),rawProcess:z.string().max(15000),stuckReasons:z.array(z.string().max(80)).max(8).default([]),notAttempted:z.boolean().default(false)}).strict().refine(v=>v.notAttempted||v.rawProcess.trim(),{message:'请写出真实步骤，或选择还没开始做。'});
+export const turnSchema=z.object({content:z.string().trim().max(4000).default(''),action:z.enum(['REPLY','HINT','RETRY']).default('REPLY')}).strict().refine(v=>v.action!=='REPLY'||v.content.length>0,{message:'请先写下你的想法。'});

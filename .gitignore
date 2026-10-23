@@ -1,0 +1,23 @@
+node_modules/
+.next/
+out/
+dist/
+.env
+.env.*
+!.env.example
+.local/
+src/generated/
+*.tsbuildinfo
+test-results/
+playwright-report/
+coverage/
+docs/reports/QA-evidence/**/html/
+docs/reports/QA-evidence/**/trace.zip
+*.log
+# Keep historical runtime evidence on disk, outside Git.
+docs/reports/QA-evidence/
+docs/reports/logo-*/
+docs/reports/*.png
+docs/reports/**/*.json
+scripts/eval/latest-results.json
+tests/service/latest-results.json
