@@ -19,6 +19,9 @@ export interface AliyunOptions {
   sleep?: (ms: number) => Promise<void>;
   random?: () => number;
   maxCompletionTokens?: number;
+  maximumDiagnosisTurns?: number;
+  /** Opt-in private evaluation capture; never forwarded to browser DTOs. */
+  onRawDiagnosisOutput?: (text: string) => void;
 }
 const circuits = new Map<string, { failures: number; openUntil: number }>();
 const MAX_RESPONSE_BYTES = 100_000;
@@ -79,16 +82,17 @@ export class AliyunGateway implements ModelGateway {
     catch {throw new GatewayError("AI_NOT_CONFIGURED", "模型服务地址配置不正确。");}
     this.model = options.model ?? "qwen3.8-flash";
     if (!Number.isInteger(options.maxCompletionTokens ?? 2500) || (options.maxCompletionTokens ?? 2500) < 128 || (options.maxCompletionTokens ?? 2500) > 2500) throw new GatewayError("AI_NOT_CONFIGURED", "模型输出上限配置不正确。");
+    if (!Number.isInteger(options.maximumDiagnosisTurns ?? 6) || (options.maximumDiagnosisTurns ?? 6) < 1 || (options.maximumDiagnosisTurns ?? 6) > 6) throw new GatewayError("AI_NOT_CONFIGURED", "诊断回合上限配置不正确。");
     this.fetchImpl = options.fetchImpl ?? fetch;
   }
 
   async createDiagnosisTurn(input: DiagnosisContext): Promise<DiagnosisTurn> {
     // Scope and minimize context; user IDs, credentials and unrelated history are absent.
-    const data = { ...input, messages: input.messages.slice(-12), toolResults: deterministicToolResults(input), maximumTurns: 6 };
+    const data = { ...input, messages: input.messages.slice(-12), toolResults: deterministicToolResults(input), maximumTurns: this.options.maximumDiagnosisTurns ?? 6 };
     return this.call([
       {role:"system",content:DIAGNOSIS_SYSTEM_PROMPT},
       {role:"user",content:JSON.stringify({untrustedStudentMaterial:data})},
-    ], value => validateDiagnosisTurn(value,input));
+    ], value => validateDiagnosisTurn(value,input), this.options.onRawDiagnosisOutput);
   }
 
   async recognizeQuestion(input: ImageRecognitionInput): Promise<RecognitionResult> {
@@ -103,7 +107,7 @@ export class AliyunGateway implements ModelGateway {
     return {items:selectPracticeItems(input.category,input.count),source:"ORIGINAL_RULE_CHECKED",warning:"当前仅使用原创、确定性计算核验的工程题集，尚未经过教师审核；不启用未经校验的模型生成题。"};
   }
 
-  private async call<T>(messages: ChatMessage[], validate: (value: unknown) => T): Promise<T> {
+  private async call<T>(messages: ChatMessage[], validate: (value: unknown) => T, captureRaw?: (text: string) => void): Promise<T> {
     const started = Date.now();
     this.lastInvocation = null;
     this.responseEvidence = [];
@@ -163,6 +167,7 @@ export class AliyunGateway implements ModelGateway {
           if (!envelope || typeof envelope !== "object") throw new GatewayError("AI_INVALID_OUTPUT", "模型返回格式不符合要求，请重试。");
           const result = envelope as {choices?:Array<{message?:{content?:unknown};finish_reason?:string}>;usage?:{prompt_tokens?:unknown;completion_tokens?:unknown}};
           const choice = result.choices?.[0];
+          if (typeof choice?.message?.content === "string") captureRaw?.(choice.message.content);
           if (choice?.finish_reason !== "stop" || typeof choice?.message?.content !== "string") throw new GatewayError("AI_INVALID_OUTPUT", "模型回复不完整，请重试。");
           try { return validate(JSON.parse(choice.message.content)); }
           catch { throw new GatewayError("AI_INVALID_OUTPUT", "模型返回内容未通过校验，请重试。你的输入已保留。"); }

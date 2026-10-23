@@ -34,6 +34,7 @@
     "eval:m9-metrics": "tsx scripts/eval/m9-metrics.ts",
     "eval:m9-conservative": "tsx scripts/eval/m9-conservative.ts",
     "eval:m9-live-plan": "tsx scripts/eval/m9-live-plan.ts",
+    "eval:m9-multi": "node --conditions=react-server --import tsx scripts/eval/m9-multi.ts",
     "eval:live": "tsx scripts/eval/controlled.ts --execute",
     "test:faults": "node scripts/m6/run-fault-tests.mjs",
     "test:production": "node scripts/m6/run-production-regression.cjs",
