@@ -18,6 +18,8 @@ npm run local
 
 ## 开发与验收命令
 
+M9 准备10例DEV教师试标、独立有效性指标及保守策略待审队列。`npm run eval:m9-pilot -- prepare`生成A/B空表；`npm run eval:m9-live-plan -- prepare`只生成未授权多轮计划，不能执行付费请求。所有真实教师结果仍PENDING，教育指标无审核保持null。见 [M9教育诊断验证准备与验收报告](docs/reports/M9-教育诊断验证准备与验收报告.md)、[教师试标说明](docs/M9-教师试标说明.md)、[多轮计划](docs/M9-真实多轮评测计划.md)。
+
 M8 已增加证据可信度、帮助内容复核、独立作答来源和错误传播约束，以及教师双人审核/来源审计工具。`npm run eval:m8-replay` 只回放本地历史响应；`npm run eval:m8-teacher -- prepare` 生成独立空白材料。实际教师审核仍为0，全部候选仍为PROVISIONAL，M8没有新付费请求。见 [M8研发与验收报告](docs/reports/M8-研发与验收报告.md)、[证据模型](docs/M8-证据可信度与因果关系.md)、[帮助与独立性](docs/M8-辅助内容复核.md)、[教师审核与八项指标](docs/M8-教师独立审核与指标.md)。
 
 M7 增加40条未审数学候选（调试24/盲测候选16）、会话级评分与教师模板。`npm run eval:m7-data` 校验数据与hash；`npm run eval:conversation -- simulate` 仅演练调试集Mock。已按用户一次授权完成1次真实协议检查，出现需教师审阅的归因和追问风险，不能据此宣称教育质量通过。Key仅本地配置，网页仍为Mock。见 [M7交付报告](docs/reports/M7-delivery.md)、[案例集说明](docs/M7-案例集说明.md)、[会话评测规范](docs/M7-会话评测规范.md)、[单次真实检查](docs/M7-单次真实协议检查.md)。

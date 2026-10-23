@@ -1,5 +1,5 @@
 import {randomUUID} from "node:crypto";
-import {writeFile} from "node:fs/promises";
+import {mkdir,writeFile} from "node:fs/promises";
 import {hash} from "@node-rs/argon2";
 import {afterAll,beforeAll,describe,expect,it,vi} from "vitest";
 import {db} from "@/lib/db";
@@ -20,7 +20,9 @@ beforeAll(async()=>{
   await db.$queryRaw`SELECT 1`;
 });
 afterAll(async()=>{
-  await writeFile(new URL("./latest-results.json",import.meta.url),JSON.stringify({executedAt:new Date().toISOString(),database:"PostgreSQL",serviceTestDataPolicy:"Created isolated random users only; no records deleted.",createdUserIds:createdUsers,expectedCases:5,completedCases:evidence.length,evidence},null,2)+"\n");
+  const directory=`.local/service-evidence/${new Date().toISOString().replace(/[:.]/g,'-')}-${randomUUID()}`;
+  await mkdir(directory,{recursive:true});
+  await writeFile(`${directory}/results.json`,JSON.stringify({executedAt:new Date().toISOString(),database:"PostgreSQL",serviceTestDataPolicy:"Created isolated random users only; no records deleted.",createdUserIds:createdUsers,expectedCases:5,completedCases:evidence.length,evidence},null,2)+"\n",{flag:'wx'});
   await db.$disconnect();
 });
 
